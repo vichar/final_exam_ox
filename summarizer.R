@@ -52,7 +52,10 @@ summary_pima_with_pregnant_history_summary <- pima_with_pregnant_history_df %>%
     Average_BMI = mean(BMI, na.rm = TRUE),
     Median_BMI = median(BMI, na.rm = TRUE),
     Mode_BMI = stat_mode(BMI),
-    Skewness_BMI = skewness(BMI, na.rm = TRUE)
+    Skewness_BMI = skewness(BMI, na.rm = TRUE),
+    Average_Pedigree = mean(DiabetesPedigreeFunction, na.rm = TRUE),
+    Median_Pedigree = median(DiabetesPedigreeFunction, na.rm = TRUE),
+    Skewness_Pedigree = skewness(DiabetesPedigreeFunction, na.rm = TRUE)
   )
 print("Summary of PIMA with Pregnant History:")
 print("\n")
@@ -86,7 +89,10 @@ pima_without_pregnant_history_df_summary <- pima_without_pregnant_history_df %>%
     Average_BMI = mean(BMI, na.rm = TRUE),
     Median_BMI = median(BMI, na.rm = TRUE),
     Mode_BMI = stat_mode(BMI),
-    Skewness_BMI = skewness(BMI, na.rm = TRUE)
+    Skewness_BMI = skewness(BMI, na.rm = TRUE),
+    Average_Pedigree = mean(DiabetesPedigreeFunction, na.rm = TRUE),
+    Median_Pedigree = median(DiabetesPedigreeFunction, na.rm = TRUE),
+    Skewness_Pedigree = skewness(DiabetesPedigreeFunction, na.rm = TRUE)
   )
 print("\n")
 print.data.frame(pima_without_pregnant_history_df_summary)
