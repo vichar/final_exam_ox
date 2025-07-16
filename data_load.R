@@ -24,15 +24,39 @@ locate_complete_numberic_columns <- function(data_frame) {
   }
   return(numeric_columns)
 }
-#print(numeric_complete_columns)
-#print(names(pima))
+
+locate_incomplete_numberic_columns <- function(data_frame) {
+  incomplete_numeric_columns <- c() 
+  for (col in names(data_frame)) {
+    if(any(is.na(data_frame[[col]]))) {
+      incomplete_numeric_columns <- c(incomplete_numeric_columns, col)
+    }
+  }
+  for (col in incomplete_numeric_columns) {
+    median_value < median(data_frame[[col]], na.rm = TRUE)
+    data_frame[[col]][is.na(data_frame[[col]])] <- median_value
+  }
+  print.data.frame(data_frame)
+}
+
+locate_populate_empty_cells <- function(data_frame) {
+  categorical_columns <- c() 
+  for (col in names(data_frame)) {
+    if (is.character(data_frame[[col]]) || is.factor(data_frame[[col]])) {
+      categorical_columns <- c(categorical_columns, col)
+    }
+  }
+  for (col in categorical_columns) {
+   data_frame[[col]][data_frame[[col]] == ""] <- NA
+  }
+  print(categorical_columns)
+}
 
 numeric_complete_columns <- locate_complete_numberic_columns(pima)
-remaining_columns <- setdiff(names(pima), numeric_complete_columns)
-print(remaining_columns)
-
-
-
-
-
-
+print("Numeric Complete Columns:")
+cat(numeric_complete_columns,"\n")
+#numeric_incomplete_columns <- 
+locate_incomplete_numberic_columns(pima)
+#print("Numeric Incomplete Columns:")
+#cat(numeric_incomplete_columns,"\n")
+locate_populate_empty_cells(pima)
