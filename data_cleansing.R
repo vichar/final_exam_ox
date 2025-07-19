@@ -8,10 +8,6 @@ load_dataset <- function(file_path, col_names = TRUE) {
   return(data_frame)
 }
 
-pima <- load_dataset(PIMA_PATH)
-
-cat("PIMA Sample Data:", "\n")
-print(head(pima))
 
 # Define statistical mode
 stat_mode <- function(x, na.rm = FALSE) {
@@ -21,7 +17,6 @@ stat_mode <- function(x, na.rm = FALSE) {
   }
   model_value <- names(sort(table(value = x), decreasing = TRUE)[1])
 }
-
 
 
 clean_missing_numeric_columns <- function(data_frame) {
@@ -44,8 +39,6 @@ clean_missing_numeric_columns <- function(data_frame) {
   return(data_frame)
 }
 
-print(head(clean_missing_numeric_columns(pima)))
-
 clean_row_with_zero <- function(data_frame) {
   for (row in 1:nrow(data_frame)) {
     for (col in names(data_frame)) {
@@ -63,6 +56,11 @@ clean_row_with_zero <- function(data_frame) {
   return(data_frame)
 }
 
+runner <- function() {
+  pima <- load_dataset(PIMA_PATH)
+  pima <- clean_missing_numeric_columns(pima)
+  cat("PIMA Sample Data after cleaning:", "\n")
+  print.data.frame(clean_row_with_zero(pima))
+}
 
-pima <- clean_missing_numeric_columns(pima)
-print(head(clean_row_with_zero(pima)))
+runner()

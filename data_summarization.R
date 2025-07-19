@@ -1,7 +1,3 @@
-
-
-
-
 # Import necessary libraries
 library(readr)
 library(dplyr)
@@ -55,9 +51,14 @@ data_summarization <- function(data_frame) {
     )
 }
 
-pima_df <- load_dataset(PIMA_PATH)
+runner <- function() {
+  pima_df <- load_dataset(PIMA_PATH)
+  
+  summarised_data  <- data_summarization(pima_df)
+  
+  cat("Summary of Pima Tribe Diabetes Dataset:", "\n", "\n")
+  glimpse(summarised_data)
+}
 
-summarised_data  <- data_summarization(pima_df)
+runner()
 
-cat("Summary of Pima Tribe Diabetes Dataset:", "\n", "\n")
-glimpse(summarised_data)
