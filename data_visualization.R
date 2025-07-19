@@ -1,101 +1,80 @@
-
-
-
-# Import necessary libraries
-library(readr)
 library(dplyr)
-library(e1071)
-
-# Define statistical mode
-stat_mode <- function(x) {
-  ux <- na.omit(unique(x))
-  ux[which.max(tabulate(match(x, ux)))]
-}
+library(tidyr)
+library(readr)
+library(styler)
 
 # Loading Data
+
 PIMA_PATH <- "Diabetes-data.csv"
-load_dataset <- function(file_path, col_names = TRUE) {
-  data_frame <- read_csv(file_path, col_names)
+load_dataset <- function(file_path,
+                         col_names = TRUE,
+                         display_type = FALSE) {
+  data_frame <- read_csv(file_path, col_names = col_names, show_col_types = display_type)
   return(data_frame)
 }
 
 
-pima_df <- load_dataset(PIMA_PATH)
+# Define statistical mode
+stat_mode <- function(x, na.rm = FALSE) {
+  x <- na.omit(x)
+  if (length(x) == 0) {
+    return(NA)
+  }
+  model_value <- names(sort(table(value = x), decreasing = TRUE)[1])
+}
 
 
-pima_with_pregnant_history_df <- pima_df[pima_df$Pregnancies != 0, ]  # Remove rows where Pregnancies not 0
+clean_missing_numeric_columns <- function(data_frame) {
+  incomplete_numeric_columns <- c()
+  for (col in names(data_frame)) {
+    if (any(is.na(data_frame[[col]]))) {
+      incomplete_numeric_columns <- c(incomplete_numeric_columns, col)
+    }
+  }
+  for (col in incomplete_numeric_columns) {
+    total_count <- length(data_frame[[col]])
+    na_count <- sum(is.na(data_frame[[col]]))
+    if ((na_count / total_count) > 0.20) {
+      data_frame[[col]] <- NULL
+    } else {
+      min_value <- min(data_frame[[col]])
+      data_frame[[col]][is.na(data_frame[[col]])] <- min_value
+    }
+  }
+  return(data_frame)
+}
 
-pima_without_pregnant_history_df <- pima_df[pima_df$Pregnancies == 0, ]  # Keep rows where Pregnancies is 0
-pima_with_pregnant_history_df <- pima_with_pregnant_history_df %>%
-  mutate(across(everything(), as.numeric))  # Converts all columns to numeric
+clean_row_with_zero <- function(data_frame) {
+  for (row in 1:nrow(data_frame)) {
+    for (col in names(data_frame)) {
+      if (!(col %in% c("Outcome", "Pregnancies")) &&
+        is.numeric(data_frame[[col]])) {
+        if (!is.na(data_frame[row, col]) && data_frame[row, col] == 0) {
+          value <- data_frame[row, col]
+          if (!is.na(value) && value == 0) {
+            break
+          }
+        }
+      }
+    }
+  }
+  return(data_frame)
+}
 
-summary_pima_with_pregnant_history_summary <- pima_with_pregnant_history_df %>%
-  summarise(
-    Count = n(),
-    Median_Pregnancies = median(Pregnancies, na.rm = TRUE),
-    Mode_Pregnancies = stat_mode(Pregnancies),
-    Average_Age = mean(Age, na.rm = TRUE),
-    Median_Age = median(Age, na.rm = TRUE),
-    Mode_Age = stat_mode(Age),
-    
-    Average_Blood_Pressure = mean(BloodPressure, na.rm = TRUE),
-    Median_Blood_Pressure = median(BloodPressure, na.rm = TRUE),
-    Mode_Blood_Pressure = stat_mode(BloodPressure),
-    Skewness_Blood_Pressure = skewness(BloodPressure, na.rm = TRUE),
-    
-    Average_Skin_Thickness = mean(SkinThickness, na.rm = TRUE),
-    Average_Insulin = mean(Insulin, na.rm = TRUE),
-    Skewness_Insulin = skewness(Insulin, na.rm = TRUE),
-    
-    Average_Glucose = mean(Glucose, na.rm = TRUE),
-    Skewness_Glucose = skewness(Glucose, na.rm = TRUE),
-    
-    Average_BMI = mean(BMI, na.rm = TRUE),
-    Median_BMI = median(BMI, na.rm = TRUE),
-    Mode_BMI = stat_mode(BMI),
-    Skewness_BMI = skewness(BMI, na.rm = TRUE),
-    Average_Pedigree = mean(DiabetesPedigreeFunction, na.rm = TRUE),
-    Median_Pedigree = median(DiabetesPedigreeFunction, na.rm = TRUE),
-    Skewness_Pedigree = skewness(DiabetesPedigreeFunction, na.rm = TRUE)
-  )
-print("Summary of PIMA with Pregnant History:")
-print("\n")
-print.data.frame(summary_pima_with_pregnant_history_summary)
-
-print("\n")
-
-print("Summary for PIMA without Pregnant History:")
-pima_without_pregnant_history_df <- pima_without_pregnant_history_df %>%
-  mutate(across(everything(), as.numeric))  # Converts all columns to numeric
-
-pima_without_pregnant_history_df_summary <- pima_without_pregnant_history_df %>%
-  summarise(
-    Count = n(),
-    Average_Age = mean(Age, na.rm = TRUE),
-    Median_Age = median(Age, na.rm = TRUE),
-    Mode_Age = stat_mode(Age),
-    
-    Average_Blood_Pressure = mean(BloodPressure, na.rm = TRUE),
-    Median_Blood_Pressure = median(BloodPressure, na.rm = TRUE),
-    Mode_Blood_Pressure = stat_mode(BloodPressure),
-    Skewness_Blood_Pressure = skewness(BloodPressure, na.rm = TRUE),
-    
-    Average_Skin_Thickness = mean(SkinThickness, na.rm = TRUE),
-    Average_Insulin = mean(Insulin, na.rm = TRUE),
-    Skewness_Insulin = skewness(Insulin, na.rm = TRUE),
-    
-    Average_Glucose = mean(Glucose, na.rm = TRUE),
-    Skewness_Glucose = skewness(Glucose, na.rm = TRUE),
-    
-    Average_BMI = mean(BMI, na.rm = TRUE),
-    Median_BMI = median(BMI, na.rm = TRUE),
-    Mode_BMI = stat_mode(BMI),
-    Skewness_BMI = skewness(BMI, na.rm = TRUE),
-    Average_Pedigree = mean(DiabetesPedigreeFunction, na.rm = TRUE),
-    Median_Pedigree = median(DiabetesPedigreeFunction, na.rm = TRUE),
-    Skewness_Pedigree = skewness(DiabetesPedigreeFunction, na.rm = TRUE)
-  )
-print("\n")
-print.data.frame(pima_without_pregnant_history_df_summary)
-
-print("\n")
+runner <- function() {
+  pima <- load_dataset(PIMA_PATH)
+  pima <- clean_missing_numeric_columns(pima)
+  pima_outcome_pivot <- pima %>%
+    group_by(Outcome) %>%
+    summarise(across(
+      where(is.numeric) & !matches("Outcome"),
+      list(
+        mean = ~ mean(.x, na.rm = TRUE),
+        median = ~ median(.x, na.rm = TRUE)
+      ),
+      .names = "{.col}_{.fn}"
+    ))
+  cat("\nPIMA Outcome Pivot Table:", "\n")
+  print.data.frame(pima_outcome_pivot)
+}
+runner()
