@@ -66,6 +66,7 @@ clean_row_with_zero <- function(data_frame) {
 runner <- function() {
   pima <- load_dataset(PIMA_PATH)
   pima <- clean_missing_numeric_columns(pima)
+  pima <- clean_row_with_zero(pima)
   pima <- pima %>%
     select(where(is.numeric)) %>%
     select(where(~ !all(is.na(.x))))
@@ -78,7 +79,7 @@ runner <- function() {
     geom_tile(color = "white") +
     scale_fill_gradient2(
       low = "blue",
-      mid = "orange",
+      mid = "yellow",
       high = "red"
     ) +
     labs(title = "Correlation Heatmap of PIMA Variables", x = NULL, y = NULL) +
