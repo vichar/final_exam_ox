@@ -65,7 +65,7 @@ clean_row_with_zero <- function(data_frame) {
         if (!is.na(data_frame[row, col]) && data_frame[row, col] == 0) {
           value <- data_frame[row, col]
           if (!is.na(value) && value == 0) {
-            data_frame[row] <- NA # Set the entire row to NA if a zero is found
+            data_frame[row,] <- NA # Set the entire row to NA if a zero is found
             break
           }
         }
@@ -82,7 +82,7 @@ clean_up_glucose_bmi <- function(data_frame) {
   data_frame$Glucose <- as.numeric(data_frame$Glucose)
   data_frame$DiabetesPedigreeFunction <- as.numeric(as.character(data_frame$DiabetesPedigreeFunction))
   data_frame$Age <- as.numeric(as.character(data_frame$Age))
-
+  
   data_frame <- data_frame %>%
     filter(!is.na(Glucose), !is.na(BMI))
   data_frame <- data_frame %>% mutate(GlucoseGroup = cut(Glucose, breaks = seq(0, 200, by = 10)))
@@ -95,7 +95,7 @@ runner <- function() {
   pima <- clean_missing_numeric_columns(pima)
   pima <- clean_row_with_zero(pima)
   pima <- clean_up_glucose_bmi(pima)
-
+  
   ggpairs(
     data = pima,
     columns = c(

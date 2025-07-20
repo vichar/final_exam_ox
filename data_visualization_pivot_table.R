@@ -84,7 +84,7 @@ clean_row_with_zero <- function(data_frame) {
         if (!is.na(data_frame[row, col]) && data_frame[row, col] == 0) {
           value <- data_frame[row, col]
           if (!is.na(value) && value == 0) {
-            data_frame[row] <- NA # Set the entire row to NA if a zero is found
+            data_frame[row,] <- NA # Set the entire row to NA if a zero is found
             break
           }
         }
