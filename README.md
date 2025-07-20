@@ -1,5 +1,3 @@
-# final_exam_ox
-
 # Summative Assignment
 
 **Due 21 Jul by 5:59**  
@@ -121,7 +119,7 @@ clean_missing_numeric_columns <- function(data_frame) {
 #'
 #' @param data_frame A numeric data frame to clean.
 #'
-#' @return A data frame excluding rows with zero values in key numeric columns.
+#' @return A data frame with rows containing zero values (in numeric columns, excluding "Outcome" and "Pregnancies") removed.
 #'
 #' @examples
 #' clean_row_with_zero(pima_df)
@@ -133,12 +131,13 @@ clean_row_with_zero <- function(data_frame) {
         if (!is.na(data_frame[row, col]) && data_frame[row, col] == 0) {
           value <- data_frame[row, col]
           if (!is.na(value) && value == 0) {
-            break
+            data_frame[row] <- NA  # Set the entire row to NA if a zero is found
           }
         }
       }
     }
   }
+  data_frame <- na.omit(data_frame)
   return(data_frame)
 }
 
@@ -264,7 +263,7 @@ clean_missing_numeric_columns <- function(data_frame) {
 #'
 #' @param data_frame A data frame to be processed.
 #'
-#' @return The original data frame (currently no rows are dropped, logic to be completed).
+#' @return A data frame with rows containing zero values (in numeric columns, excluding "Outcome" and "Pregnancies") removed.
 #'
 #' @examples
 #' clean_row_with_zero(pima_df)
@@ -276,12 +275,13 @@ clean_row_with_zero <- function(data_frame) {
         if (!is.na(data_frame[row, col]) && data_frame[row, col] == 0) {
           value <- data_frame[row, col]
           if (!is.na(value) && value == 0) {
-            break
+            data_frame[row] <- NA  # Set the entire row to NA if a zero is found
           }
         }
       }
     }
   }
+  data_frame <- na.omit(data_frame)
   return(data_frame)
 }
 
@@ -407,7 +407,7 @@ clean_missing_numeric_columns <- function(data_frame) {
 #'
 #' @param data_frame A data frame to be checked.
 #'
-#' @return The input data frame (rows are currently not removed).
+#' @return A data frame with rows containing zero values (in numeric columns, excluding "Outcome" and "Pregnancies") removed.
 #'
 #' @examples
 #' clean_row_with_zero(pima_df)
@@ -419,12 +419,13 @@ clean_row_with_zero <- function(data_frame) {
         if (!is.na(data_frame[row, col]) && data_frame[row, col] == 0) {
           value <- data_frame[row, col]
           if (!is.na(value) && value == 0) {
-            break
+            data_frame[row] <- NA  # Set the entire row to NA if a zero is found
           }
         }
       }
     }
   }
+  data_frame <- na.omit(data_frame)
   return(data_frame)
 }
 
@@ -550,7 +551,7 @@ clean_missing_numeric_columns <- function(data_frame) {
 #'
 #' @param data_frame The input data frame to be checked.
 #'
-#' @return The unchanged input data frame.
+#' @return A data frame with rows containing zero values (in numeric columns, excluding "Outcome" and "Pregnancies") removed.
 clean_row_with_zero <- function(data_frame) {
   for (row in 1:nrow(data_frame)) {
     for (col in names(data_frame)) {
@@ -559,12 +560,13 @@ clean_row_with_zero <- function(data_frame) {
         if (!is.na(data_frame[row, col]) && data_frame[row, col] == 0) {
           value <- data_frame[row, col]
           if (!is.na(value) && value == 0) {
-            break
+            data_frame[row] <- NA  # Set the entire row to NA if a zero is found
           }
         }
       }
     }
   }
+  data_frame <- na.omit(data_frame)
   return(data_frame)
 }
 
@@ -755,7 +757,7 @@ append_table_with_category <- function(data_frame) {
 #'
 #' @param data_frame A data frame to process.
 #'
-#' @return The input data frame. No rows are removed in the current implementation.
+#' @return A data frame with rows containing zero values (in numeric columns, excluding "Outcome" and "Pregnancies") removed.
 #'
 #' @examples
 #' clean_row_with_zero(pima_df)
@@ -767,12 +769,13 @@ clean_row_with_zero <- function(data_frame) {
         if (!is.na(data_frame[row, col]) && data_frame[row, col] == 0) {
           value <- data_frame[row, col]
           if (!is.na(value) && value == 0) {
-            break
+            data_frame[row] <- NA  # Set the entire row to NA if a zero is found
           }
         }
       }
     }
   }
+  data_frame <- na.omit(data_frame)
   return(data_frame)
 }
 
@@ -904,8 +907,7 @@ clean_missing_numeric_columns <- function(data_frame) {
 #'
 #' @param data_frame A data frame to validate.
 #'
-#' @return The original data frame, unchanged.
-
+#' @return A data frame with rows containing zero values (in numeric columns, excluding "Outcome" and "Pregnancies") removed.
 clean_row_with_zero <- function(data_frame) {
   for (row in 1:nrow(data_frame)) {
     for (col in names(data_frame)) {
@@ -914,12 +916,13 @@ clean_row_with_zero <- function(data_frame) {
         if (!is.na(data_frame[row, col]) && data_frame[row, col] == 0) {
           value <- data_frame[row, col]
           if (!is.na(value) && value == 0) {
-            break
+            data_frame[row] <- NA  # Set the entire row to NA if a zero is found
           }
         }
       }
     }
   }
+  data_frame <- na.omit(data_frame)
   return(data_frame)
 }
 

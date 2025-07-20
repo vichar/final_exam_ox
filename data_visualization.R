@@ -85,20 +85,21 @@ clean_missing_numeric_columns <- function(data_frame) {
 #' @examples
 #' clean_row_with_zero(pima_df)
 clean_row_with_zero <- function(data_frame) {
-  for (row in 1:nrow(data_frame)) {
-    for (col in names(data_frame)) {
-      if (!(col %in% c("Outcome", "Pregnancies")) &&
-        is.numeric(data_frame[[col]])) {
-        if (!is.na(data_frame[row, col]) && data_frame[row, col] == 0) {
-          value <- data_frame[row, col]
-          if (!is.na(value) && value == 0) {
-            break
-          }
-        }
-      }
-    }
-  }
-  return(data_frame)
+for (row in 1:nrow(data_frame)) {
+for (col in names(data_frame)) {
+if (!(col %in% c("Outcome", "Pregnancies")) &&
+is.numeric(data_frame[[col]])) {
+if (!is.na(data_frame[row, col]) && data_frame[row, col] == 0) {
+value <- data_frame[row, col]
+if (!is.na(value) && value == 0) {
+data_frame[row] <- NA # Set the entire row to NA if a zero is found
+}
+}
+}
+}
+}
+data_frame <- na.omit(data_frame)
+return(data_frame)
 }
 
 #' Execute Full Preprocessing and Generate Summary Table
