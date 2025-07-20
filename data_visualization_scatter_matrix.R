@@ -4,7 +4,7 @@ library(readr)
 library(styler)
 library(reshape2)
 library(ggplot2)
-
+library(GGally)
 # Loading Data
 
 PIMA_PATH <- "Diabetes-data.csv"
@@ -46,25 +46,6 @@ clean_missing_numeric_columns <- function(data_frame) {
   return(data_frame)
 }
 
-append_table_with_category <- function(data_frame) {
-  for (row in 1:nrow(data_frame)) {
-    weight_value <- data_frame[row, "BMI"]
-    category_value <- if (is.na(weight_value)) {
-      NA_character_
-    } else if (weight_value < 23) {
-      "Underweight"
-    } else if (weight_value <= 29) {
-      "Normal Weight"
-    } else {
-      "Overweight"
-    }
-
-    data_frame[row, "Category"] <- category_value
-  }
-  return(data_frame)
-}
-
-
 clean_row_with_zero <- function(data_frame) {
   for (row in 1:nrow(data_frame)) {
     for (col in names(data_frame)) {
@@ -82,29 +63,43 @@ clean_row_with_zero <- function(data_frame) {
   return(data_frame)
 }
 
-filter_weight_columns <- function(data_frame) {
-  data_frame$BMI[data_frame$BMI == "?"] <- NA
-  data_frame$BMI[data_frame$BMI == ""] <- NA
-  data_frame$BMI <- as.numeric(data_frame$BMI)
+clean_up_glucose_bmi <- function(data_frame) {
+  data_frame[data_frame == "?"] <- NA
+  data_frame[data_frame == ""] <- NA
+  data_frame$Glucose <- as.numeric(data_frame$Glucose)
+  data_frame$DiabetesPedigreeFunction <- as.numeric(as.character(data_frame$DiabetesPedigreeFunction))
+  data_frame$Age <- as.numeric(as.character(data_frame$Age))
+
   data_frame <- data_frame %>%
-    filter(!is.na(BMI), BMI != 0)
+    filter(!is.na(Glucose), !is.na(BMI))
+  data_frame <- data_frame %>% mutate(GlucoseGroup = cut(Glucose, breaks = seq(0, 200, by = 10)))
   return(data_frame)
 }
 
+
 runner <- function() {
   pima <- load_dataset(PIMA_PATH)
-  pima <- clean_row_with_zero(pima)
   pima <- clean_missing_numeric_columns(pima)
-  pima <- filter_weight_columns(pima)
-  pima <- append_table_with_category(pima)
-  pima_outcome_pivot <- pima %>%
-    group_by(Category) %>%
-    summarise(
-      Count = n(),
-      Diabetes_Outcome = sum(Outcome == 1, na.rm = TRUE),
-      Percentage = (Diabetes_Outcome / Count) * 100
-    )
-  print(pima_outcome_pivot)
-}
+  pima <- clean_row_with_zero(pima)
+  pima <- clean_up_glucose_bmi(pima)
 
+  ggpairs(
+    data = pima,
+    columns = c(
+      "Pregnancies",
+      "Glucose",
+      "BloodPressure",
+      "SkinThickness",
+      "BMI",
+      "DiabetesPedigreeFunction",
+      "Age"
+    ),
+    aes(color = factor(Outcome), alpha = 0.5),
+    lower = list(continuous = wrap("points", alpha = 1.5)),
+    diag = list(continuous = wrap("barDiag", bins = 15)),
+    upper = list(continuous = wrap("cor", size = 3))
+  ) +
+    theme_minimal() +
+    labs(title = "Scatter Matrix of PIMA Indian Diabetes Dataset", subtitle = "Showing relationships between Pregnancies,Glucose,BloodPressure,SkinThickness,BMI,DiabetesPedigreeFunction,Age")
+}
 runner()
