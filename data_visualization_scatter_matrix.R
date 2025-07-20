@@ -46,6 +46,25 @@ clean_missing_numeric_columns <- function(data_frame) {
   return(data_frame)
 }
 
+append_table_with_category <- function(data_frame) {
+  for (row in 1:nrow(data_frame)) {
+    weight_value <- data_frame[row, "BMI"]
+    category_value <- if (is.na(weight_value)) {
+      NA_character_
+    } else if (weight_value < 23) {
+      "Underweight"
+    } else if (weight_value <= 29) {
+      "Normal Weight"
+    } else {
+      "Overweight"
+    }
+
+    data_frame[row, "Category"] <- category_value
+  }
+  return(data_frame)
+}
+
+
 clean_row_with_zero <- function(data_frame) {
   for (row in 1:nrow(data_frame)) {
     for (col in names(data_frame)) {
@@ -63,39 +82,29 @@ clean_row_with_zero <- function(data_frame) {
   return(data_frame)
 }
 
+filter_weight_columns <- function(data_frame) {
+  data_frame$BMI[data_frame$BMI == "?"] <- NA
+  data_frame$BMI[data_frame$BMI == ""] <- NA
+  data_frame$BMI <- as.numeric(data_frame$BMI)
+  data_frame <- data_frame %>%
+    filter(!is.na(BMI), BMI != 0)
+  return(data_frame)
+}
+
 runner <- function() {
   pima <- load_dataset(PIMA_PATH)
-  pima <- clean_missing_numeric_columns(pima)
   pima <- clean_row_with_zero(pima)
-  pima[pima == "?"] <- NA
-  pima[pima == ""] <- NA
-  pima$Glucose <- as.numeric(pima$Glucose)
-  pima <- pima %>%
-    filter(!is.na(Glucose), !is.na(BMI))
-  pima <- pima %>% mutate(GlucoseGroup = cut(Glucose, breaks = seq(0, 200, by = 10)))
-  ggplot(pima, aes(
-    x = Glucose,
-    y = BMI,
-    color = factor(Outcome)
-  )) +
-    geom_jitter(
-      width = 1.5,
-      height = 0,
-      alpha = 0.7,
-      size = 2
-    ) +
-    labs(
-      title = "Scatter Plot of Glucose vs Insulin",
-      x = "Glucose Level",
-      y = "Insulin Level",
-      color = "Diabetes Outcome"
-    ) +
-    scale_color_manual(
-      values = c("0" = "blue", "1" = "red"),
-      name = "Diabetes  Outcome",
-      labels = c("Non-Diabetic", "Diabetic")
-    ) +
-    theme_minimal() +
-    theme(legend.position = "bottom")
+  pima <- clean_missing_numeric_columns(pima)
+  pima <- filter_weight_columns(pima)
+  pima <- append_table_with_category(pima)
+  pima_outcome_pivot <- pima %>%
+    group_by(Category) %>%
+    summarise(
+      Count = n(),
+      Diabetes_Outcome = sum(Outcome == 1, na.rm = TRUE),
+      Percentage = (Diabetes_Outcome / Count) * 100
+    )
+  print(pima_outcome_pivot)
 }
+
 runner()
