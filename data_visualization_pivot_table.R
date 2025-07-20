@@ -2,6 +2,8 @@ library(dplyr)
 library(tidyr)
 library(readr)
 library(styler)
+library(reshape2)
+library(ggplot2)
 
 # Loading Data
 
@@ -44,6 +46,25 @@ clean_missing_numeric_columns <- function(data_frame) {
   return(data_frame)
 }
 
+append_table_with_category <- function(data_frame) {
+  for (row in 1:nrow(data_frame)) {
+    weight_value <- data_frame[row, "BMI"]
+    category_value <- if (is.na(weight_value)) {
+      NA_character_
+    } else if (weight_value < 23) {
+      "Underweight"
+    } else if (weight_value <= 29) {
+      "Normal Weight"
+    } else {
+      "Overweight"
+    }
+
+    data_frame[row, "Category"] <- category_value
+  }
+  return(data_frame)
+}
+
+
 clean_row_with_zero <- function(data_frame) {
   for (row in 1:nrow(data_frame)) {
     for (col in names(data_frame)) {
@@ -61,21 +82,29 @@ clean_row_with_zero <- function(data_frame) {
   return(data_frame)
 }
 
+filter_weight_columns <- function(data_frame) {
+  data_frame$BMI[data_frame$BMI == "?"] <- NA
+  data_frame$BMI[data_frame$BMI == ""] <- NA
+  data_frame$BMI <- as.numeric(data_frame$BMI)
+  data_frame <- data_frame %>%
+    filter(!is.na(BMI), BMI != 0)
+  return(data_frame)
+}
+
 runner <- function() {
   pima <- load_dataset(PIMA_PATH)
-  pima <- clean_missing_numeric_columns(pima)
   pima <- clean_row_with_zero(pima)
+  pima <- clean_missing_numeric_columns(pima)
+  pima <- filter_weight_columns(pima)
+  pima <- append_table_with_category(pima)
   pima_outcome_pivot <- pima %>%
-    group_by(Outcome) %>%
-    summarise(across(
-      where(is.numeric) & !matches("Outcome"),
-      list(
-        mean = ~ mean(.x, na.rm = TRUE),
-        median = ~ median(.x, na.rm = TRUE)
-      ),
-      .names = "{.col}_{.fn}"
-    ))
-  cat("\nPIMA Outcome Pivot Table:", "\n")
-  print.data.frame(pima_outcome_pivot)
+    group_by(Category) %>%
+    summarise(
+      Count = n(),
+      Diabetes_Outcome = sum(Outcome == 1, na.rm = TRUE),
+      Percentage = (Diabetes_Outcome / Count) * 100
+    )
+  print(pima_outcome_pivot)
 }
+
 runner()

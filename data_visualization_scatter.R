@@ -2,6 +2,8 @@ library(dplyr)
 library(tidyr)
 library(readr)
 library(styler)
+library(reshape2)
+library(ggplot2)
 
 # Loading Data
 
@@ -65,17 +67,35 @@ runner <- function() {
   pima <- load_dataset(PIMA_PATH)
   pima <- clean_missing_numeric_columns(pima)
   pima <- clean_row_with_zero(pima)
-  pima_outcome_pivot <- pima %>%
-    group_by(Outcome) %>%
-    summarise(across(
-      where(is.numeric) & !matches("Outcome"),
-      list(
-        mean = ~ mean(.x, na.rm = TRUE),
-        median = ~ median(.x, na.rm = TRUE)
-      ),
-      .names = "{.col}_{.fn}"
-    ))
-  cat("\nPIMA Outcome Pivot Table:", "\n")
-  print.data.frame(pima_outcome_pivot)
+  pima[pima == "?"] <- NA
+  pima[pima == ""] <- NA
+  pima$Glucose <- as.numeric(pima$Glucose)
+  pima <- pima %>%
+    filter(!is.na(Glucose), !is.na(BMI))
+  pima <- pima %>% mutate(GlucoseGroup = cut(Glucose, breaks = seq(0, 200, by = 10)))
+  ggplot(pima, aes(
+    x = Glucose,
+    y = BMI,
+    color = factor(Outcome)
+  )) +
+    geom_jitter(
+      width = 1.5,
+      height = 0,
+      alpha = 0.7,
+      size = 2
+    ) +
+    labs(
+      title = "Scatter Plot of Glucose vs Insulin",
+      x = "Glucose Level",
+      y = "Insulin Level",
+      color = "Diabetes Outcome"
+    ) +
+    scale_color_manual(
+      values = c("0" = "blue", "1" = "red"),
+      name = "Diabetest Outcome",
+      labels = c("Non-Diabetic", "Diabetic")
+    ) +
+    theme_minimal() +
+    theme(legend.position = "bottom")
 }
 runner()
