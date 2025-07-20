@@ -5,9 +5,18 @@ library(styler)
 library(reshape2)
 library(ggplot2)
 
-# Loading Data
-
 PIMA_PATH <- "Diabetes-data.csv"
+#' Load the PIMA Diabetes Dataset
+#'
+#' Loads the PIMA dataset from a CSV file using `readr::read_csv`.
+#'
+#' @param file_path String. Path to the dataset file.
+#' @param col_names Logical. Indicates whether the first row contains column names. Default is TRUE.
+#' @param display_type Logical. If TRUE, displays column type messages. Default is FALSE.
+#'
+#' @return A data frame containing the loaded data.
+#'
+#' @examples
 load_dataset <- function(file_path,
                          col_names = TRUE,
                          display_type = FALSE) {
@@ -16,7 +25,17 @@ load_dataset <- function(file_path,
 }
 
 
-# Define statistical mode
+#' Calculate the Mode of a Vector
+#'
+#' Computes the most frequently occurring value in a vector.
+#'
+#' @param x A numeric or character vector.
+#' @param na.rm Logical. If TRUE, missing values are removed. Default is FALSE.
+#'
+#' @return The mode (most frequent value), or NA if input is empty after NA removal.
+#'
+#' @examples
+#' stat_mode(c(1, 1, 2, 3))  # returns 1
 stat_mode <- function(x, na.rm = FALSE) {
   x <- na.omit(x)
   if (length(x) == 0) {
@@ -25,7 +44,17 @@ stat_mode <- function(x, na.rm = FALSE) {
   model_value <- names(sort(table(value = x), decreasing = TRUE)[1])
 }
 
-
+#' Clean Columns with Missing Data
+#'
+#' Drops columns with more than 20% missing values. Fills remaining missing values
+#' with the minimum value of that column.
+#'
+#' @param data_frame A data frame with possible missing values.
+#'
+#' @return A cleaned data frame with NA values handled or dropped.
+#'
+#' @examples
+#' clean_missing_numeric_columns(pima_df)
 clean_missing_numeric_columns <- function(data_frame) {
   incomplete_numeric_columns <- c()
   for (col in names(data_frame)) {
@@ -46,6 +75,17 @@ clean_missing_numeric_columns <- function(data_frame) {
   return(data_frame)
 }
 
+#' Remove Rows with Zeroes in Numeric Variables
+#'
+#' Scans all numeric variables (excluding 'Outcome' and 'Pregnancies') and flags rows
+#' containing 0 values for review. Currently retains all rows.
+#'
+#' @param data_frame A data frame to be checked.
+#'
+#' @return The input data frame (rows are currently not removed).
+#'
+#' @examples
+#' clean_row_with_zero(pima_df)
 clean_row_with_zero <- function(data_frame) {
   for (row in 1:nrow(data_frame)) {
     for (col in names(data_frame)) {
@@ -63,6 +103,23 @@ clean_row_with_zero <- function(data_frame) {
   return(data_frame)
 }
 
+#' Main Processing Pipeline for PIMA Dataset
+#'
+#' Executes full data preparation: loading, cleaning missing values, filtering rows,
+#' and generating a correlation heatmap.
+#'
+#' Steps include:
+#' - Reading the dataset
+#' - Removing columns with >20% missing values
+#' - Imputing remaining NAs with column minimums
+#' - Dropping rows with zero values in numeric columns
+#' - Computing pairwise correlations (excluding NA-only columns)
+#' - Displaying a heatmap of variable correlations using ggplot2
+#'
+#' @return No return value. Displays a correlation heatmap using ggplot2.
+#'
+#' @examples
+#' runner()
 runner <- function() {
   pima <- load_dataset(PIMA_PATH)
   pima <- clean_missing_numeric_columns(pima)

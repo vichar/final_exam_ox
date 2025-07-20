@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>final&lowbar;exam&lowbar;ox</title>
+  <style>
+    .vscode-dark img[src$=\#gh-light-mode-only],
+    .vscode-light img[src$=\#gh-dark-mode-only],
+    .vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+    .vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+      display: none;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet"
+    type="text/css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  </style>
+  <style>
+    .task-list-item {
+      list-style-type: none;
+    }
+
+    .task-list-item-checkbox {
+      margin-left: -20px;
+      vertical-align: middle;
+      pointer-events: none;
+    }
+  </style>
+  <style>
+    :root {
+      --color-note: #0969da;
+      --color-tip: #1a7f37;
+      --color-warning: #9a6700;
+      --color-severe: #bc4c00;
+      --color-caution: #d1242f;
+      --color-important: #8250df;
+    }
+  </style>
+  <style>
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-note: #2f81f7;
+        --color-tip: #3fb950;
+        --color-warning: #d29922;
+        --color-severe: #db6d28;
+        --color-caution: #f85149;
+        --color-important: #a371f7;
+      }
+    }
+  </style>
+  <style>
+    .markdown-alert {
+      padding: 0.5rem 1rem;
+      margin-bottom: 16px;
+      color: inherit;
+      border-left: .25em solid #888;
+    }
+
+    .markdown-alert>:first-child {
+      margin-top: 0
+    }
+
+    .markdown-alert>:last-child {
+      margin-bottom: 0
+    }
+
+    .markdown-alert .markdown-alert-title {
+      display: flex;
+      font-weight: 500;
+      align-items: center;
+      line-height: 1
+    }
+
+    .markdown-alert .markdown-alert-title .octicon {
+      margin-right: 0.5rem;
+      display: inline-block;
+      overflow: visible !important;
+      vertical-align: text-bottom;
+      fill: currentColor;
+    }
+
+    .markdown-alert.markdown-alert-note {
+      border-left-color: var(--color-note);
+    }
+
+    .markdown-alert.markdown-alert-note .markdown-alert-title {
+      color: var(--color-note);
+    }
+
+    .markdown-alert.markdown-alert-important {
+      border-left-color: var(--color-important);
+    }
+
+    .markdown-alert.markdown-alert-important .markdown-alert-title {
+      color: var(--color-important);
+    }
+
+    .markdown-alert.markdown-alert-warning {
+      border-left-color: var(--color-warning);
+    }
+
+    .markdown-alert.markdown-alert-warning .markdown-alert-title {
+      color: var(--color-warning);
+    }
+
+    .markdown-alert.markdown-alert-tip {
+      border-left-color: var(--color-tip);
+    }
+
+    .markdown-alert.markdown-alert-tip .markdown-alert-title {
+      color: var(--color-tip);
+    }
+
+    .markdown-alert.markdown-alert-caution {
+      border-left-color: var(--color-caution);
+    }
+
+    .markdown-alert.markdown-alert-caution .markdown-alert-title {
+      color: var(--color-caution);
+    }
+  </style>
+
+</head>
+
+<body class="vscode-body vscode-light">
+  <h1 id="summative-assignment">Summative Assignment</h1>
+  <p><strong>Due 21 Jul by 5:59</strong><br>
+    <strong>Points 0</strong><br>
+    <strong>Available 4 Jul at 6:00 - 21 Jul at 5:59</strong>
+  </p>
+  <hr>
+  <h3 id="course-r-programming-for-data-science-introduction">Course: R Programming for Data Science: Introduction</h3>
+  <p>Please complete the following questions to test your understanding of the concepts covered in the &quot;R
+    Programming for Data Science: Introduction&quot; course. Please submit your code/answers for each question after the
+    question itself. Feel free to refer to the course material and conduct additional research as needed.</p>
+  <hr>
+  <h2 id="overview">Overview:</h2>
+  <p>You are going to use a dataset that was collected and made freely available by the &quot;National Institute of
+    Diabetes and Digestive and Kidney Diseases&quot; as part of the Pima Indians Diabetes Database. The dataset is
+    available to download as part of this assignment via this link:</p>
+  <p><a
+      href="https://drive.google.com/file/d/1qDkGULtjrXw-H4OPXgPZH6PnVcPBHzYK/view?usp=sharing">https://drive.google.com/file/d/1qDkGULtjrXw-H4OPXgPZH6PnVcPBHzYK/view?usp=sharing</a>
+  </p>
+  <p>The dataset contains the following variables (i.e. columns):</p>
+  <ul>
+    <li>Pregnancies: Number of times pregnant</li>
+    <li>Glucose: Plasma glucose concentration over 2 hours in an oral glucose tolerance test</li>
+    <li>BloodPressure: Diastolic blood pressure (mm Hg)</li>
+    <li>SkinThickness: Triceps skin fold thickness (mm)</li>
+    <li>Insulin: 2-Hour serum insulin (mu U/ml)</li>
+    <li>BMI: Body mass index (weight in kg/(height in m)2)</li>
+    <li>DiabetesPedigreeFunction: Diabetes pedigree function (a function which scores likelihood of diabetes based on
+      family history)</li>
+    <li>Age: Age (years)</li>
+    <li>Outcome: 0 if non-diabetic, 1 if diabetic</li>
+  </ul>
+  <hr>
+  <h2
+    id="answer-the-following-questions-by-writing-and-providing-the-required-r-code-to-perform-the-listed-tasks-please-make-sure-you-follow-best-coding-practices-explained-throughout-the-course-also-feel-free-to-perform-intermediary-steps-if-you-think-they-are-needed">
+    Answer the following questions by writing and providing the required R code to perform the listed tasks (Please make
+    sure you follow best coding practices explained throughout the course. Also, feel free to perform intermediary steps
+    if you think they are needed):</h2>
+  <p>1- Load the dataset, generate a numeric statistical summary of all its variables.</p>
+  <p>2- The dataset contains missing values. Sometimes those values are blank and some other times a question mark has
+    been used to indicate them. If any variable has more than 20% of its values missing, drop that variable.</p>
+  <p>3- For the remaining variables, Replace all missing values in each variable by the minimum value in that variable.
+  </p>
+  <pre><code class="language-r">
+library<span class="hljs-punctuation">(</span>readr<span class="hljs-punctuation">)</span>
+
+PIMA_PATH <span class="hljs-operator">&lt;-</span> <span class="hljs-string">&quot;Diabetes-data.csv&quot;</span>
+
+<span class="hljs-comment">#&#x27; Load PIMA Diabetes Dataset</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; This function loads the PIMA Diabetes dataset from a specified CSV file path using `readr::read_csv`.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">file_path</span></span> String path to the CSV file.</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">col_names</span></span> Logical indicating if the first row contains column names (default is TRUE).</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> A data frame containing the loaded dataset.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span>
+#&#x27; load_dataset(&quot;Diabetes-data.csv&quot;)</span>
+load_dataset <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>file_path<span class="hljs-punctuation">,</span> col_names <span class="hljs-operator">=</span> <span class="hljs-literal">TRUE</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  data_frame <span class="hljs-operator">&lt;-</span> read_csv<span class="hljs-punctuation">(</span>file_path<span class="hljs-punctuation">,</span> col_names<span class="hljs-punctuation">)</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Compute Statistical Mode</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; This function computes the mode (most frequent value) of a vector, ignoring NAs by default.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">x</span></span> A vector (numeric, character, or factor).</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">na.rm</span></span> Logical indicating whether to ignore missing values. Default is FALSE.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> A single value representing the mode, or NA if no mode is found.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span>
+#&#x27; stat_mode(c(1, 2, 2, 3, 3, 3, 4))</span>
+stat_mode <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>x<span class="hljs-punctuation">,</span> na.rm <span class="hljs-operator">=</span> <span class="hljs-literal">FALSE</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  x <span class="hljs-operator">&lt;-</span> na.omit<span class="hljs-punctuation">(</span>x<span class="hljs-punctuation">)</span>
+  <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-built_in">length</span><span class="hljs-punctuation">(</span>x<span class="hljs-punctuation">)</span> <span class="hljs-operator">==</span> <span class="hljs-number">0</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span><span class="hljs-literal">NA</span><span class="hljs-punctuation">)</span>
+  <span class="hljs-punctuation">}</span>
+  model_value <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>sort<span class="hljs-punctuation">(</span>table<span class="hljs-punctuation">(</span>value <span class="hljs-operator">=</span> x<span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> decreasing <span class="hljs-operator">=</span> <span class="hljs-literal">TRUE</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">[</span><span class="hljs-number">1</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Clean Missing Numeric Columns</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; This function drops columns with more than 20% missing values (NAs) and replaces remaining NAs</span>
+<span class="hljs-comment">#&#x27; in numeric columns with the column&#x27;s minimum non-NA value.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">data_frame</span></span> A data frame with possible missing values.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> A cleaned data frame with no columns over 20% NA and all remaining NAs filled with column minimums.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span>
+#&#x27; clean_missing_numeric_columns(pima_df)</span>
+clean_missing_numeric_columns <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  incomplete_numeric_columns <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>
+  <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>col <span class="hljs-keyword">in</span> <span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-built_in">any</span><span class="hljs-punctuation">(</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      incomplete_numeric_columns <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span>incomplete_numeric_columns<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">)</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+  <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>col <span class="hljs-keyword">in</span> incomplete_numeric_columns<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    total_count <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">length</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span>
+    na_count <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">sum</span><span class="hljs-punctuation">(</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-punctuation">(</span>na_count <span class="hljs-operator">/</span> total_count<span class="hljs-punctuation">)</span> <span class="hljs-operator">&gt;</span> <span class="hljs-number">0.20</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> <span class="hljs-literal">NULL</span>
+    <span class="hljs-punctuation">}</span> <span class="hljs-keyword">else</span> <span class="hljs-punctuation">{</span>
+      min_value <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">min</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span>
+      data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">[</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> min_value
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Remove Rows Containing Zero Values in Key Columns</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; This function scans each row and removes rows where any numeric column </span>
+<span class="hljs-comment">#&#x27; (except &quot;Outcome&quot; and &quot;Pregnancies&quot;) contains a zero.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">data_frame</span></span> A numeric data frame to clean.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> A data frame excluding rows with zero values in key numeric columns.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span>
+#&#x27; clean_row_with_zero(pima_df)</span>
+clean_row_with_zero <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>row <span class="hljs-keyword">in</span> <span class="hljs-number">1</span><span class="hljs-operator">:</span>nrow<span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>col <span class="hljs-keyword">in</span> <span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-punctuation">(</span>col <span class="hljs-operator">%in%</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;Outcome&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;Pregnancies&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;&amp;</span>
+          <span class="hljs-built_in">is.numeric</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[</span>row<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;&amp;</span> data_frame<span class="hljs-punctuation">[</span>row<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">]</span> <span class="hljs-operator">==</span> <span class="hljs-number">0</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+          value <span class="hljs-operator">&lt;-</span> data_frame<span class="hljs-punctuation">[</span>row<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">]</span>
+          <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>value<span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;&amp;</span> value <span class="hljs-operator">==</span> <span class="hljs-number">0</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+            <span class="hljs-keyword">break</span>
+          <span class="hljs-punctuation">}</span>
+        <span class="hljs-punctuation">}</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Run Full Data Cleaning Pipeline</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; This function loads the PIMA dataset, cleans it by removing columns with too many missing values,</span>
+<span class="hljs-comment">#&#x27; replaces missing values, and drops rows with zero values in key columns. Then it prints a sample.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> None (prints cleaned data to console).</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span>
+#&#x27; runner()</span>
+runner <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  pima <span class="hljs-operator">&lt;-</span> load_dataset<span class="hljs-punctuation">(</span>PIMA_PATH<span class="hljs-punctuation">)</span>
+  pima <span class="hljs-operator">&lt;-</span> clean_missing_numeric_columns<span class="hljs-punctuation">(</span>pima<span class="hljs-punctuation">)</span>
+  cat<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;PIMA Sample Data after cleaning:&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;\n&quot;</span><span class="hljs-punctuation">)</span>
+  print.data.frame<span class="hljs-punctuation">(</span>clean_row_with_zero<span class="hljs-punctuation">(</span>pima<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+runner<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>
+</code></pre>
+  <p>Now the dataset should be full without any missing values.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Pregnancies</th>
+        <th>Glucose</th>
+        <th>BloodPressure</th>
+        <th>SkinThickness</th>
+        <th>BMI</th>
+        <th>DiabetesPedigreeFunction</th>
+        <th>Age</th>
+        <th>Outcome</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>6</td>
+        <td>148</td>
+        <td>72</td>
+        <td>35</td>
+        <td>33.6</td>
+        <td>0.627</td>
+        <td>50</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>85</td>
+        <td>66</td>
+        <td>29</td>
+        <td>26.6</td>
+        <td>0.351</td>
+        <td>31</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>183</td>
+        <td>64</td>
+        <td>0</td>
+        <td>23.3</td>
+        <td>0.672</td>
+        <td>32</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>89</td>
+        <td>66</td>
+        <td>23</td>
+        <td>28.1</td>
+        <td>0.167</td>
+        <td>21</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>137</td>
+        <td>40</td>
+        <td>35</td>
+        <td>43.1</td>
+        <td>2.288</td>
+        <td>33</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>116</td>
+        <td>74</td>
+        <td>0</td>
+        <td>25.6</td>
+        <td>0.201</td>
+        <td>30</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>78</td>
+        <td>50</td>
+        <td>32</td>
+        <td>31.0</td>
+        <td>0.248</td>
+        <td>26</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>115</td>
+        <td>0</td>
+        <td>0</td>
+        <td>35.3</td>
+        <td>0.134</td>
+        <td>29</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>197</td>
+        <td>70</td>
+        <td>45</td>
+        <td>30.5</td>
+        <td>0.158</td>
+        <td>53</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>125</td>
+        <td>96</td>
+        <td>0</td>
+        <td>NaN</td>
+        <td>0.232</td>
+        <td>54</td>
+        <td>1</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>4- Some variables will contain 0 values but those values don’t make sense. In this dataset, 0 values only make
+    sense in the Pregnancies and Outcome columns. Drop any row that contains one or more 0’s in any column(s) other than
+    Pregnancies and Outcome.</p>
+  <p>5- Group the data based on the Outcome column and generate the mean and median values for all other columns.</p>
+  <pre><code class="language-r">library<span class="hljs-punctuation">(</span>dplyr<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>tidyr<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>readr<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>styler<span class="hljs-punctuation">)</span>
+
+PIMA_PATH <span class="hljs-operator">&lt;-</span> <span class="hljs-string">&quot;Diabetes-data.csv&quot;</span>
+<span class="hljs-comment">#&#x27; Load the PIMA Diabetes Dataset</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Loads a CSV file containing the PIMA diabetes dataset using `readr::read_csv`.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">file_path</span></span> Path to the CSV file.</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">col_names</span></span> Logical. Whether the first row contains column names. Default is TRUE.</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">display_type</span></span> Logical. Whether to display column type messages. Default is FALSE.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> A data frame containing the loaded dataset.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span></span>
+load_dataset <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>file_path<span class="hljs-punctuation">,</span>
+                         col_names <span class="hljs-operator">=</span> <span class="hljs-literal">TRUE</span><span class="hljs-punctuation">,</span>
+                         display_type <span class="hljs-operator">=</span> <span class="hljs-literal">FALSE</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  data_frame <span class="hljs-operator">&lt;-</span> read_csv<span class="hljs-punctuation">(</span>file_path<span class="hljs-punctuation">,</span> col_names <span class="hljs-operator">=</span> col_names<span class="hljs-punctuation">,</span> show_col_types <span class="hljs-operator">=</span> display_type<span class="hljs-punctuation">)</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Calculate the Statistical Mode</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Computes the mode (most frequent value) of a numeric or character vector.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">x</span></span> A vector (numeric, character, or factor).</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">na.rm</span></span> Logical. Whether to ignore missing values. Default is FALSE.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> The most frequent value in the vector, or NA if input is empty after NA removal.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span>
+#&#x27; stat_mode(c(1, 2, 2, 3))</span>
+stat_mode <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>x<span class="hljs-punctuation">,</span> na.rm <span class="hljs-operator">=</span> <span class="hljs-literal">FALSE</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  x <span class="hljs-operator">&lt;-</span> na.omit<span class="hljs-punctuation">(</span>x<span class="hljs-punctuation">)</span>
+  <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-built_in">length</span><span class="hljs-punctuation">(</span>x<span class="hljs-punctuation">)</span> <span class="hljs-operator">==</span> <span class="hljs-number">0</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span><span class="hljs-literal">NA</span><span class="hljs-punctuation">)</span>
+  <span class="hljs-punctuation">}</span>
+  model_value <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>sort<span class="hljs-punctuation">(</span>table<span class="hljs-punctuation">(</span>value <span class="hljs-operator">=</span> x<span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> decreasing <span class="hljs-operator">=</span> <span class="hljs-literal">TRUE</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">[</span><span class="hljs-number">1</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Clean Columns with Missing Values</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Identifies columns with missing values. If more than 20% of the values in a column are missing,</span>
+<span class="hljs-comment">#&#x27; the column is dropped. Otherwise, missing values are replaced with the column&#x27;s minimum value.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">data_frame</span></span> A data frame containing numeric columns with missing values.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> A cleaned data frame with imputed or removed columns as appropriate.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span>
+#&#x27; clean_missing_numeric_columns(pima_df)</span>
+clean_missing_numeric_columns <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  incomplete_numeric_columns <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>
+  <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>col <span class="hljs-keyword">in</span> <span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-built_in">any</span><span class="hljs-punctuation">(</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      incomplete_numeric_columns <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span>incomplete_numeric_columns<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">)</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+  <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>col <span class="hljs-keyword">in</span> incomplete_numeric_columns<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    total_count <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">length</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span>
+    na_count <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">sum</span><span class="hljs-punctuation">(</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-punctuation">(</span>na_count <span class="hljs-operator">/</span> total_count<span class="hljs-punctuation">)</span> <span class="hljs-operator">&gt;</span> <span class="hljs-number">0.20</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> <span class="hljs-literal">NULL</span>
+    <span class="hljs-punctuation">}</span> <span class="hljs-keyword">else</span> <span class="hljs-punctuation">{</span>
+      min_value <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">min</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span>
+      data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">[</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> min_value
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+
+<span class="hljs-comment">#&#x27; Remove Rows with Zero Values in Key Columns</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Iterates through the data frame and flags rows where any numeric column (except for &#x27;Outcome&#x27; or &#x27;Pregnancies&#x27;)</span>
+<span class="hljs-comment">#&#x27; contains a zero. The rows are retained in the current implementation but flagged for exclusion logic.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">data_frame</span></span> A data frame to be processed.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> The original data frame (currently no rows are dropped, logic to be completed).</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span>
+#&#x27; clean_row_with_zero(pima_df)</span>
+clean_row_with_zero <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>row <span class="hljs-keyword">in</span> <span class="hljs-number">1</span><span class="hljs-operator">:</span>nrow<span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>col <span class="hljs-keyword">in</span> <span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-punctuation">(</span>col <span class="hljs-operator">%in%</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;Outcome&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;Pregnancies&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;&amp;</span>
+        <span class="hljs-built_in">is.numeric</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[</span>row<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;&amp;</span> data_frame<span class="hljs-punctuation">[</span>row<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">]</span> <span class="hljs-operator">==</span> <span class="hljs-number">0</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+          value <span class="hljs-operator">&lt;-</span> data_frame<span class="hljs-punctuation">[</span>row<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">]</span>
+          <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>value<span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;&amp;</span> value <span class="hljs-operator">==</span> <span class="hljs-number">0</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+            <span class="hljs-keyword">break</span>
+          <span class="hljs-punctuation">}</span>
+        <span class="hljs-punctuation">}</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Execute Full Preprocessing and Generate Summary Table</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Loads, cleans, and preprocesses the PIMA dataset. Cleans missing values, removes problematic rows,</span>
+<span class="hljs-comment">#&#x27; and generates a pivot table grouped by `Outcome` showing mean and median for each numeric variable.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> No return value. Prints summary table to console.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span>
+#&#x27; runner()</span>
+runner <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  pima <span class="hljs-operator">&lt;-</span> load_dataset<span class="hljs-punctuation">(</span>PIMA_PATH<span class="hljs-punctuation">)</span>
+  pima <span class="hljs-operator">&lt;-</span> clean_missing_numeric_columns<span class="hljs-punctuation">(</span>pima<span class="hljs-punctuation">)</span>
+  pima <span class="hljs-operator">&lt;-</span> clean_row_with_zero<span class="hljs-punctuation">(</span>pima<span class="hljs-punctuation">)</span>
+  pima_outcome_pivot <span class="hljs-operator">&lt;-</span> pima <span class="hljs-operator">%&gt;%</span>
+    group_by<span class="hljs-punctuation">(</span>Outcome<span class="hljs-punctuation">)</span> <span class="hljs-operator">%&gt;%</span>
+    summarise<span class="hljs-punctuation">(</span>across<span class="hljs-punctuation">(</span>
+      where<span class="hljs-punctuation">(</span><span class="hljs-built_in">is.numeric</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;</span> <span class="hljs-operator">!</span>matches<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;Outcome&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-built_in">list</span><span class="hljs-punctuation">(</span>
+        mean <span class="hljs-operator">=</span> <span class="hljs-operator">~</span> mean<span class="hljs-punctuation">(</span>.x<span class="hljs-punctuation">,</span> na.rm <span class="hljs-operator">=</span> <span class="hljs-literal">TRUE</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span>
+        median <span class="hljs-operator">=</span> <span class="hljs-operator">~</span> median<span class="hljs-punctuation">(</span>.x<span class="hljs-punctuation">,</span> na.rm <span class="hljs-operator">=</span> <span class="hljs-literal">TRUE</span><span class="hljs-punctuation">)</span>
+      <span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span>
+      .names <span class="hljs-operator">=</span> <span class="hljs-string">&quot;{.col}_{.fn}&quot;</span>
+    <span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+  cat<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;\nPIMA Outcome Pivot Table:&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;\n&quot;</span><span class="hljs-punctuation">)</span>
+  print.data.frame<span class="hljs-punctuation">(</span>pima_outcome_pivot<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+runner<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>
+</code></pre>
+  <table>
+    <thead>
+      <tr>
+        <th>Outcome</th>
+        <th>Pregnancies_mean</th>
+        <th>Pregnancies_median</th>
+        <th>BloodPressure_mean</th>
+        <th>BloodPressure_median</th>
+        <th>SkinThickness_mean</th>
+        <th>SkinThickness_median</th>
+        <th>BMI_mean</th>
+        <th>BMI_median</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>0</td>
+        <td>3.298</td>
+        <td>2</td>
+        <td>68.184</td>
+        <td>70</td>
+        <td>19.664</td>
+        <td>21</td>
+        <td>30.85967</td>
+        <td>30.1</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>4.865672</td>
+        <td>4</td>
+        <td>70.82463</td>
+        <td>74</td>
+        <td>22.16418</td>
+        <td>27</td>
+        <td>35.40677</td>
+        <td>34.3</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>6- Generate a heatmap plot that shows the correlation values between all variables in the dataset.</p>
+  <pre><code class="language-r">
+library<span class="hljs-punctuation">(</span>dplyr<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>tidyr<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>readr<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>styler<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>reshape2<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>ggplot2<span class="hljs-punctuation">)</span>
+
+PIMA_PATH <span class="hljs-operator">&lt;-</span> <span class="hljs-string">&quot;Diabetes-data.csv&quot;</span>
+<span class="hljs-comment">#&#x27; Load the PIMA Diabetes Dataset</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Loads the PIMA dataset from a CSV file using `readr::read_csv`.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">file_path</span></span> String. Path to the dataset file.</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">col_names</span></span> Logical. Indicates whether the first row contains column names. Default is TRUE.</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">display_type</span></span> Logical. If TRUE, displays column type messages. Default is FALSE.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> A data frame containing the loaded data.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span></span>
+load_dataset <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>file_path<span class="hljs-punctuation">,</span>
+                         col_names <span class="hljs-operator">=</span> <span class="hljs-literal">TRUE</span><span class="hljs-punctuation">,</span>
+                         display_type <span class="hljs-operator">=</span> <span class="hljs-literal">FALSE</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  data_frame <span class="hljs-operator">&lt;-</span> read_csv<span class="hljs-punctuation">(</span>file_path<span class="hljs-punctuation">,</span> col_names <span class="hljs-operator">=</span> col_names<span class="hljs-punctuation">,</span> show_col_types <span class="hljs-operator">=</span> display_type<span class="hljs-punctuation">)</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+
+<span class="hljs-comment">#&#x27; Calculate the Mode of a Vector</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Computes the most frequently occurring value in a vector.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">x</span></span> A numeric or character vector.</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">na.rm</span></span> Logical. If TRUE, missing values are removed. Default is FALSE.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> The mode (most frequent value), or NA if input is empty after NA removal.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span>
+#&#x27; stat_mode(c(1, 1, 2, 3))  # returns 1</span>
+stat_mode <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>x<span class="hljs-punctuation">,</span> na.rm <span class="hljs-operator">=</span> <span class="hljs-literal">FALSE</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  x <span class="hljs-operator">&lt;-</span> na.omit<span class="hljs-punctuation">(</span>x<span class="hljs-punctuation">)</span>
+  <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-built_in">length</span><span class="hljs-punctuation">(</span>x<span class="hljs-punctuation">)</span> <span class="hljs-operator">==</span> <span class="hljs-number">0</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span><span class="hljs-literal">NA</span><span class="hljs-punctuation">)</span>
+  <span class="hljs-punctuation">}</span>
+  model_value <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>sort<span class="hljs-punctuation">(</span>table<span class="hljs-punctuation">(</span>value <span class="hljs-operator">=</span> x<span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> decreasing <span class="hljs-operator">=</span> <span class="hljs-literal">TRUE</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">[</span><span class="hljs-number">1</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Clean Columns with Missing Data</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Drops columns with more than 20% missing values. Fills remaining missing values</span>
+<span class="hljs-comment">#&#x27; with the minimum value of that column.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">data_frame</span></span> A data frame with possible missing values.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> A cleaned data frame with NA values handled or dropped.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span>
+#&#x27; clean_missing_numeric_columns(pima_df)</span>
+clean_missing_numeric_columns <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  incomplete_numeric_columns <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>
+  <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>col <span class="hljs-keyword">in</span> <span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-built_in">any</span><span class="hljs-punctuation">(</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      incomplete_numeric_columns <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span>incomplete_numeric_columns<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">)</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+  <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>col <span class="hljs-keyword">in</span> incomplete_numeric_columns<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    total_count <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">length</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span>
+    na_count <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">sum</span><span class="hljs-punctuation">(</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-punctuation">(</span>na_count <span class="hljs-operator">/</span> total_count<span class="hljs-punctuation">)</span> <span class="hljs-operator">&gt;</span> <span class="hljs-number">0.20</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> <span class="hljs-literal">NULL</span>
+    <span class="hljs-punctuation">}</span> <span class="hljs-keyword">else</span> <span class="hljs-punctuation">{</span>
+      min_value <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">min</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span>
+      data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">[</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> min_value
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Remove Rows with Zeroes in Numeric Variables</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Scans all numeric variables (excluding &#x27;Outcome&#x27; and &#x27;Pregnancies&#x27;) and flags rows</span>
+<span class="hljs-comment">#&#x27; containing 0 values for review. Currently retains all rows.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">data_frame</span></span> A data frame to be checked.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> The input data frame (rows are currently not removed).</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span>
+#&#x27; clean_row_with_zero(pima_df)</span>
+clean_row_with_zero <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>row <span class="hljs-keyword">in</span> <span class="hljs-number">1</span><span class="hljs-operator">:</span>nrow<span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>col <span class="hljs-keyword">in</span> <span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-punctuation">(</span>col <span class="hljs-operator">%in%</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;Outcome&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;Pregnancies&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;&amp;</span>
+        <span class="hljs-built_in">is.numeric</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[</span>row<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;&amp;</span> data_frame<span class="hljs-punctuation">[</span>row<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">]</span> <span class="hljs-operator">==</span> <span class="hljs-number">0</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+          value <span class="hljs-operator">&lt;-</span> data_frame<span class="hljs-punctuation">[</span>row<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">]</span>
+          <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>value<span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;&amp;</span> value <span class="hljs-operator">==</span> <span class="hljs-number">0</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+            <span class="hljs-keyword">break</span>
+          <span class="hljs-punctuation">}</span>
+        <span class="hljs-punctuation">}</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Main Processing Pipeline for PIMA Dataset</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Executes full data preparation: loading, cleaning missing values, filtering rows,</span>
+<span class="hljs-comment">#&#x27; and generating a correlation heatmap.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Steps include:</span>
+<span class="hljs-comment">#&#x27; - Reading the dataset</span>
+<span class="hljs-comment">#&#x27; - Removing columns with &gt;20% missing values</span>
+<span class="hljs-comment">#&#x27; - Imputing remaining NAs with column minimums</span>
+<span class="hljs-comment">#&#x27; - Dropping rows with zero values in numeric columns</span>
+<span class="hljs-comment">#&#x27; - Computing pairwise correlations (excluding NA-only columns)</span>
+<span class="hljs-comment">#&#x27; - Displaying a heatmap of variable correlations using ggplot2</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> No return value. Displays a correlation heatmap using ggplot2.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span>
+#&#x27; runner()</span>
+runner <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  pima <span class="hljs-operator">&lt;-</span> load_dataset<span class="hljs-punctuation">(</span>PIMA_PATH<span class="hljs-punctuation">)</span>
+  pima <span class="hljs-operator">&lt;-</span> clean_missing_numeric_columns<span class="hljs-punctuation">(</span>pima<span class="hljs-punctuation">)</span>
+  pima <span class="hljs-operator">&lt;-</span> clean_row_with_zero<span class="hljs-punctuation">(</span>pima<span class="hljs-punctuation">)</span>
+  pima <span class="hljs-operator">&lt;-</span> pima <span class="hljs-operator">%&gt;%</span>
+    select<span class="hljs-punctuation">(</span>where<span class="hljs-punctuation">(</span><span class="hljs-built_in">is.numeric</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">%&gt;%</span>
+    select<span class="hljs-punctuation">(</span>where<span class="hljs-punctuation">(</span><span class="hljs-operator">~</span> <span class="hljs-operator">!</span><span class="hljs-built_in">all</span><span class="hljs-punctuation">(</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>.x<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+  corelation_matrix <span class="hljs-operator">&lt;-</span> cor<span class="hljs-punctuation">(</span>pima<span class="hljs-punctuation">,</span> use <span class="hljs-operator">=</span> <span class="hljs-string">&quot;complete.obs&quot;</span><span class="hljs-punctuation">)</span>
+  corelation_dataframe <span class="hljs-operator">&lt;-</span> as.data.frame<span class="hljs-punctuation">(</span>as.table<span class="hljs-punctuation">(</span>corelation_matrix<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">%&gt;%</span>
+    filter<span class="hljs-punctuation">(</span>Var1 <span class="hljs-operator">!=</span> Var2<span class="hljs-punctuation">)</span> <span class="hljs-operator">%&gt;%</span>
+    arrange<span class="hljs-punctuation">(</span>desc<span class="hljs-punctuation">(</span>Freq<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+  colnames<span class="hljs-punctuation">(</span>corelation_dataframe<span class="hljs-punctuation">)</span> <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;Var1&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;Var2&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;Correlation&quot;</span><span class="hljs-punctuation">)</span>
+  ggplot<span class="hljs-punctuation">(</span>corelation_dataframe<span class="hljs-punctuation">,</span> aes<span class="hljs-punctuation">(</span>x <span class="hljs-operator">=</span> Var1<span class="hljs-punctuation">,</span> y <span class="hljs-operator">=</span> Var2<span class="hljs-punctuation">,</span> fill <span class="hljs-operator">=</span> Correlation<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">+</span>
+    geom_tile<span class="hljs-punctuation">(</span>color <span class="hljs-operator">=</span> <span class="hljs-string">&quot;white&quot;</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">+</span>
+    scale_fill_gradient2<span class="hljs-punctuation">(</span>
+      low <span class="hljs-operator">=</span> <span class="hljs-string">&quot;blue&quot;</span><span class="hljs-punctuation">,</span>
+      mid <span class="hljs-operator">=</span> <span class="hljs-string">&quot;yellow&quot;</span><span class="hljs-punctuation">,</span>
+      high <span class="hljs-operator">=</span> <span class="hljs-string">&quot;red&quot;</span>
+    <span class="hljs-punctuation">)</span> <span class="hljs-operator">+</span>
+    labs<span class="hljs-punctuation">(</span>title <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Correlation Heatmap of PIMA Variables&quot;</span><span class="hljs-punctuation">,</span> x <span class="hljs-operator">=</span> <span class="hljs-literal">NULL</span><span class="hljs-punctuation">,</span> y <span class="hljs-operator">=</span> <span class="hljs-literal">NULL</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">+</span>
+    theme<span class="hljs-punctuation">(</span>axis.text.x <span class="hljs-operator">=</span> element_text<span class="hljs-punctuation">(</span>angle <span class="hljs-operator">=</span> <span class="hljs-number">45</span><span class="hljs-punctuation">,</span> hjust <span class="hljs-operator">=</span> <span class="hljs-number">1</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+runner<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>
+
+</code></pre>
+  <p><img src="heatmap.png" alt="Heatmap of Correlation Matrix"></p>
+  <p>7- Generate a scatter plot showing Glucose in the x-axis and BMI in the y-axis. Colourise the markers by Outcome
+    (e.g. markers representing diabetic individuals should be red and markers representing non-diabetic individuals
+    should be blue).</p>
+  <pre><code class="language-r">library<span class="hljs-punctuation">(</span>dplyr<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>tidyr<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>readr<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>styler<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>reshape2<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>ggplot2<span class="hljs-punctuation">)</span>
+
+
+PIMA_PATH <span class="hljs-operator">&lt;-</span> <span class="hljs-string">&quot;Diabetes-data.csv&quot;</span>
+<span class="hljs-comment">#&#x27; Load the PIMA Diabetes Dataset</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Reads a CSV file into a data frame using readr. Optionally displays column type information.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">file_path</span></span> String. Path to the CSV file.</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">col_names</span></span> Logical. Whether the file contains header names. Default_</span>
+load_dataset <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>file_path<span class="hljs-punctuation">,</span>
+                         col_names <span class="hljs-operator">=</span> <span class="hljs-literal">TRUE</span><span class="hljs-punctuation">,</span>
+                         display_type <span class="hljs-operator">=</span> <span class="hljs-literal">FALSE</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  data_frame <span class="hljs-operator">&lt;-</span> read_csv<span class="hljs-punctuation">(</span>file_path<span class="hljs-punctuation">,</span> col_names <span class="hljs-operator">=</span> col_names<span class="hljs-punctuation">,</span> show_col_types <span class="hljs-operator">=</span> display_type<span class="hljs-punctuation">)</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+
+<span class="hljs-comment">#&#x27; Calculate the Mode of a Vector</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Returns the most frequent (modal) value in the vector, ignoring NA values.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">x</span></span> A numeric or character vector.</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">na.rm</span></span> Logical. If TRUE, missing values are removed before calculation.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> The mode (most common value) of the vector. Returns NA if no values are present.</span>
+stat_mode <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>x<span class="hljs-punctuation">,</span> na.rm <span class="hljs-operator">=</span> <span class="hljs-literal">FALSE</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  x <span class="hljs-operator">&lt;-</span> na.omit<span class="hljs-punctuation">(</span>x<span class="hljs-punctuation">)</span>
+  <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-built_in">length</span><span class="hljs-punctuation">(</span>x<span class="hljs-punctuation">)</span> <span class="hljs-operator">==</span> <span class="hljs-number">0</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span><span class="hljs-literal">NA</span><span class="hljs-punctuation">)</span>
+  <span class="hljs-punctuation">}</span>
+  model_value <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>sort<span class="hljs-punctuation">(</span>table<span class="hljs-punctuation">(</span>value <span class="hljs-operator">=</span> x<span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> decreasing <span class="hljs-operator">=</span> <span class="hljs-literal">TRUE</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">[</span><span class="hljs-number">1</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Handle Missing Values in Numeric Columns</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Checks for missing values in each column. If more than 20% are missing, the column is dropped.</span>
+<span class="hljs-comment">#&#x27; Otherwise, missing values are replaced with the column&#x27;s minimum value.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">data_frame</span></span> A data frame with possible NA values.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> A cleaned data frame with no columns having &gt;20% missing values, and missing values imputed.</span>
+clean_missing_numeric_columns <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  incomplete_numeric_columns <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>
+  <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>col <span class="hljs-keyword">in</span> <span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-built_in">any</span><span class="hljs-punctuation">(</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      incomplete_numeric_columns <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span>incomplete_numeric_columns<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">)</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+  <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>col <span class="hljs-keyword">in</span> incomplete_numeric_columns<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    total_count <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">length</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span>
+    na_count <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">sum</span><span class="hljs-punctuation">(</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-punctuation">(</span>na_count <span class="hljs-operator">/</span> total_count<span class="hljs-punctuation">)</span> <span class="hljs-operator">&gt;</span> <span class="hljs-number">0.20</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> <span class="hljs-literal">NULL</span>
+    <span class="hljs-punctuation">}</span> <span class="hljs-keyword">else</span> <span class="hljs-punctuation">{</span>
+      min_value <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">min</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span>
+      data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">[</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> min_value
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Placeholder Loop for Zero-Value Checking</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Iterates through numeric columns (except &#x27;Outcome&#x27; and &#x27;Pregnancies&#x27;) to examine rows with 0 values.</span>
+<span class="hljs-comment">#&#x27; Does not currently filter out rows — this may be intended for validation or inspection logic.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">data_frame</span></span> The input data frame to be checked.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> The unchanged input data frame.</span>
+clean_row_with_zero <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>row <span class="hljs-keyword">in</span> <span class="hljs-number">1</span><span class="hljs-operator">:</span>nrow<span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>col <span class="hljs-keyword">in</span> <span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-punctuation">(</span>col <span class="hljs-operator">%in%</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;Outcome&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;Pregnancies&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;&amp;</span>
+        <span class="hljs-built_in">is.numeric</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[</span>row<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;&amp;</span> data_frame<span class="hljs-punctuation">[</span>row<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">]</span> <span class="hljs-operator">==</span> <span class="hljs-number">0</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+          value <span class="hljs-operator">&lt;-</span> data_frame<span class="hljs-punctuation">[</span>row<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">]</span>
+          <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>value<span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;&amp;</span> value <span class="hljs-operator">==</span> <span class="hljs-number">0</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+            <span class="hljs-keyword">break</span>
+          <span class="hljs-punctuation">}</span>
+        <span class="hljs-punctuation">}</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Placeholder Loop for Zero-Value Checking</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Iterates through numeric columns (except &#x27;Outcome&#x27; and &#x27;Pregnancies&#x27;) to examine rows with 0 values.</span>
+<span class="hljs-comment">#&#x27; Does not currently filter out rows — this may be intended for validation or inspection logic.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">data_frame</span></span> The input data frame to be checked.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> The unchanged input data frame.</span>
+runner <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  pima <span class="hljs-operator">&lt;-</span> load_dataset<span class="hljs-punctuation">(</span>PIMA_PATH<span class="hljs-punctuation">)</span>
+  pima <span class="hljs-operator">&lt;-</span> clean_missing_numeric_columns<span class="hljs-punctuation">(</span>pima<span class="hljs-punctuation">)</span>
+  pima <span class="hljs-operator">&lt;-</span> clean_row_with_zero<span class="hljs-punctuation">(</span>pima<span class="hljs-punctuation">)</span>
+  pima<span class="hljs-punctuation">[</span>pima <span class="hljs-operator">==</span> <span class="hljs-string">&quot;?&quot;</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> <span class="hljs-literal">NA</span>
+  pima<span class="hljs-punctuation">[</span>pima <span class="hljs-operator">==</span> <span class="hljs-string">&quot;&quot;</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> <span class="hljs-literal">NA</span>
+  pima<span class="hljs-operator">$</span>Glucose <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">as.numeric</span><span class="hljs-punctuation">(</span>pima<span class="hljs-operator">$</span>Glucose<span class="hljs-punctuation">)</span>
+  pima <span class="hljs-operator">&lt;-</span> pima <span class="hljs-operator">%&gt;%</span>
+    filter<span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>Glucose<span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> <span class="hljs-operator">!</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>BMI<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+  pima <span class="hljs-operator">&lt;-</span> pima <span class="hljs-operator">%&gt;%</span> mutate<span class="hljs-punctuation">(</span>GlucoseGroup <span class="hljs-operator">=</span> cut<span class="hljs-punctuation">(</span>Glucose<span class="hljs-punctuation">,</span> breaks <span class="hljs-operator">=</span> seq<span class="hljs-punctuation">(</span><span class="hljs-number">0</span><span class="hljs-punctuation">,</span> <span class="hljs-number">200</span><span class="hljs-punctuation">,</span> by <span class="hljs-operator">=</span> <span class="hljs-number">10</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+  ggplot<span class="hljs-punctuation">(</span>pima<span class="hljs-punctuation">,</span> aes<span class="hljs-punctuation">(</span>
+    x <span class="hljs-operator">=</span> Glucose<span class="hljs-punctuation">,</span>
+    y <span class="hljs-operator">=</span> BMI<span class="hljs-punctuation">,</span>
+    color <span class="hljs-operator">=</span> factor<span class="hljs-punctuation">(</span>Outcome<span class="hljs-punctuation">)</span>
+  <span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">+</span>
+    geom_jitter<span class="hljs-punctuation">(</span>
+      width <span class="hljs-operator">=</span> <span class="hljs-number">1.5</span><span class="hljs-punctuation">,</span>
+      height <span class="hljs-operator">=</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span>
+      alpha <span class="hljs-operator">=</span> <span class="hljs-number">0.7</span><span class="hljs-punctuation">,</span>
+      size <span class="hljs-operator">=</span> <span class="hljs-number">2</span>
+    <span class="hljs-punctuation">)</span> <span class="hljs-operator">+</span>
+    labs<span class="hljs-punctuation">(</span>
+      title <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Scatter Plot of Glucose vs Insulin&quot;</span><span class="hljs-punctuation">,</span>
+      x <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Glucose Level&quot;</span><span class="hljs-punctuation">,</span>
+      y <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Insulin Level&quot;</span><span class="hljs-punctuation">,</span>
+      color <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Diabetes Outcome&quot;</span>
+    <span class="hljs-punctuation">)</span> <span class="hljs-operator">+</span>
+    scale_color_manual<span class="hljs-punctuation">(</span>
+      values <span class="hljs-operator">=</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;0&quot;</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;blue&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;1&quot;</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;red&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span>
+      name <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Diabetes  Outcome&quot;</span><span class="hljs-punctuation">,</span>
+      labels <span class="hljs-operator">=</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;Non-Diabetic&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;Diabetic&quot;</span><span class="hljs-punctuation">)</span>
+    <span class="hljs-punctuation">)</span> <span class="hljs-operator">+</span>
+    theme_minimal<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">+</span>
+    theme<span class="hljs-punctuation">(</span>legend.position <span class="hljs-operator">=</span> <span class="hljs-string">&quot;bottom&quot;</span><span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+runner<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>
+</code></pre>
+  <p><img src="scatter_plot.png" alt="Scatter Plot"></p>
+  <p>8- Create a new column in the dataset to categorise BMI into groups. For example, you can create three categories:
+    &quot;Underweight&quot; for BMI &lt; 23, &quot;Normal Weight&quot; for BMI between 23 to 29 inclusive, and
+    &quot;Overweight&quot; for BMI &gt; 29. You can choose your own range of values if you wish but make sure you avoid
+    weight value overlapping and ambiguity.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Pregnancies</th>
+        <th>Glucose</th>
+        <th>BloodPressure</th>
+        <th>SkinThickness</th>
+        <th>BMI</th>
+        <th>DiabetesPedigreeFunction</th>
+        <th>Age</th>
+        <th>Outcome</th>
+        <th>Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>6</td>
+        <td>148</td>
+        <td>72</td>
+        <td>35</td>
+        <td>33.6</td>
+        <td>0.627</td>
+        <td>50</td>
+        <td>1</td>
+        <td>Overweight</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>85</td>
+        <td>66</td>
+        <td>29</td>
+        <td>26.6</td>
+        <td>0.351</td>
+        <td>31</td>
+        <td>0</td>
+        <td>Normal Weight</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>183</td>
+        <td>64</td>
+        <td>0</td>
+        <td>23.3</td>
+        <td>0.672</td>
+        <td>32</td>
+        <td>1</td>
+        <td>Normal Weight</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>89</td>
+        <td>66</td>
+        <td>23</td>
+        <td>28.1</td>
+        <td>0.167</td>
+        <td>21</td>
+        <td>0</td>
+        <td>Normal Weight</td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>137</td>
+        <td>40</td>
+        <td>35</td>
+        <td>43.1</td>
+        <td>2.288</td>
+        <td>33</td>
+        <td>1</td>
+        <td>Overweight</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>116</td>
+        <td>74</td>
+        <td>0</td>
+        <td>25.6</td>
+        <td>0.201</td>
+        <td>30</td>
+        <td>0</td>
+        <td>Normal Weight</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>9- Group the data by BMI category and calculate the percentage of individuals with diabetes within each category.
+    Your code should display the BMI categories and the corresponding percentage of individuals with diabetes.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Count</th>
+        <th>Diabetes_Outcome</th>
+        <th>Percentage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Normal Weight</td>
+        <td>204</td>
+        <td>38</td>
+        <td>18.6</td>
+      </tr>
+      <tr>
+        <td>Overweight</td>
+        <td>503</td>
+        <td>227</td>
+        <td>45.1</td>
+      </tr>
+      <tr>
+        <td>Underweight</td>
+        <td>50</td>
+        <td>1</td>
+        <td>2.0</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Code for Both 8 and 9</p>
+  <pre><code class="language-r">library<span class="hljs-punctuation">(</span>dplyr<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>tidyr<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>readr<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>styler<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>reshape2<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>ggplot2<span class="hljs-punctuation">)</span>
+
+
+PIMA_PATH <span class="hljs-operator">&lt;-</span> <span class="hljs-string">&quot;Diabetes-data.csv&quot;</span>
+
+<span class="hljs-comment">#&#x27; Load the PIMA Diabetes Dataset</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Loads the PIMA dataset from a CSV file using `readr::read_csv`.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">file_path</span></span> String. Path to the dataset file.</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">col_names</span></span> Logical. Indicates if the first row contains column names. Default is TRUE.</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">display_type</span></span> Logical. If TRUE, displays column type messages. Default is FALSE.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> A data frame containing the loaded data.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span>
+#&#x27; load_dataset(&quot;Diabetes-data.csv&quot;)</span>
+load_dataset <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>file_path<span class="hljs-punctuation">,</span>
+                         col_names <span class="hljs-operator">=</span> <span class="hljs-literal">TRUE</span><span class="hljs-punctuation">,</span>
+                         display_type <span class="hljs-operator">=</span> <span class="hljs-literal">FALSE</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  data_frame <span class="hljs-operator">&lt;-</span> read_csv<span class="hljs-punctuation">(</span>file_path<span class="hljs-punctuation">,</span> col_names <span class="hljs-operator">=</span> col_names<span class="hljs-punctuation">,</span> show_col_types <span class="hljs-operator">=</span> display_type<span class="hljs-punctuation">)</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+
+<span class="hljs-comment">#&#x27; Calculate the Mode of a Vector</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Returns the most frequent value in a vector. If the input is empty after NA removal, returns NA.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">x</span></span> A numeric or character vector.</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">na.rm</span></span> Logical. Whether to remove missing values. Default is FALSE.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> A scalar value representing the mode.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span>
+#&#x27; stat_mode(c(1, 2, 2, 3))  # Returns 2</span>
+stat_mode <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>x<span class="hljs-punctuation">,</span> na.rm <span class="hljs-operator">=</span> <span class="hljs-literal">FALSE</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  x <span class="hljs-operator">&lt;-</span> na.omit<span class="hljs-punctuation">(</span>x<span class="hljs-punctuation">)</span>
+  <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-built_in">length</span><span class="hljs-punctuation">(</span>x<span class="hljs-punctuation">)</span> <span class="hljs-operator">==</span> <span class="hljs-number">0</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span><span class="hljs-literal">NA</span><span class="hljs-punctuation">)</span>
+  <span class="hljs-punctuation">}</span>
+  model_value <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>sort<span class="hljs-punctuation">(</span>table<span class="hljs-punctuation">(</span>value <span class="hljs-operator">=</span> x<span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> decreasing <span class="hljs-operator">=</span> <span class="hljs-literal">TRUE</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">[</span><span class="hljs-number">1</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Clean Missing Data from Numeric Columns</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Identifies columns with missing values. If more than 20% of values are missing, the column is dropped.</span>
+<span class="hljs-comment">#&#x27; Otherwise, missing values are replaced with the minimum of that column.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">data_frame</span></span> A data frame with possible missing values.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> A cleaned data frame with imputed or removed columns.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span>
+#&#x27; clean_missing_numeric_columns(pima_df)</span>
+clean_missing_numeric_columns <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  incomplete_numeric_columns <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>
+  <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>col <span class="hljs-keyword">in</span> <span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-built_in">any</span><span class="hljs-punctuation">(</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      incomplete_numeric_columns <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span>incomplete_numeric_columns<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">)</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+  <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>col <span class="hljs-keyword">in</span> incomplete_numeric_columns<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    total_count <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">length</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span>
+    na_count <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">sum</span><span class="hljs-punctuation">(</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-punctuation">(</span>na_count <span class="hljs-operator">/</span> total_count<span class="hljs-punctuation">)</span> <span class="hljs-operator">&gt;</span> <span class="hljs-number">0.20</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> <span class="hljs-literal">NULL</span>
+    <span class="hljs-punctuation">}</span> <span class="hljs-keyword">else</span> <span class="hljs-punctuation">{</span>
+      min_value <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">min</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span>
+      data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">[</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> min_value
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Categorize Individuals by BMI</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Assigns BMI categories (&quot;Underweight&quot;, &quot;Normal Weight&quot;, &quot;Overweight&quot;) to each row in the dataset</span>
+<span class="hljs-comment">#&#x27; based on the BMI value.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">data_frame</span></span> A data frame containing a BMI column.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> A data frame with an additional column &#x27;Category&#x27; indicating weight category.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span>
+#&#x27; append_table_with_category(pima_df)</span>
+append_table_with_category <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>row <span class="hljs-keyword">in</span> <span class="hljs-number">1</span><span class="hljs-operator">:</span>nrow<span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    weight_value <span class="hljs-operator">&lt;-</span> data_frame<span class="hljs-punctuation">[</span>row<span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;BMI&quot;</span><span class="hljs-punctuation">]</span>
+    category_value <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>weight_value<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-literal">NA_character_</span>
+    <span class="hljs-punctuation">}</span> <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span>weight_value <span class="hljs-operator">&lt;</span> <span class="hljs-number">23</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-string">&quot;Underweight&quot;</span>
+    <span class="hljs-punctuation">}</span> <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span>weight_value <span class="hljs-operator">&lt;=</span> <span class="hljs-number">29</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-string">&quot;Normal Weight&quot;</span>
+    <span class="hljs-punctuation">}</span> <span class="hljs-keyword">else</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-string">&quot;Overweight&quot;</span>
+    <span class="hljs-punctuation">}</span>
+
+    data_frame<span class="hljs-punctuation">[</span>row<span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;Category&quot;</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> category_value
+  <span class="hljs-punctuation">}</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Identify and Retain Rows Without Zero in Numeric Columns</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Iterates through all numeric columns (except &#x27;Outcome&#x27; and &#x27;Pregnancies&#x27;) and retains all rows.</span>
+<span class="hljs-comment">#&#x27; Intended for placeholder or validation logic.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">data_frame</span></span> A data frame to process.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> The input data frame. No rows are removed in the current implementation.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span>
+#&#x27; clean_row_with_zero(pima_df)</span>
+clean_row_with_zero <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>row <span class="hljs-keyword">in</span> <span class="hljs-number">1</span><span class="hljs-operator">:</span>nrow<span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>col <span class="hljs-keyword">in</span> <span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-punctuation">(</span>col <span class="hljs-operator">%in%</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;Outcome&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;Pregnancies&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;&amp;</span>
+        <span class="hljs-built_in">is.numeric</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[</span>row<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;&amp;</span> data_frame<span class="hljs-punctuation">[</span>row<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">]</span> <span class="hljs-operator">==</span> <span class="hljs-number">0</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+          value <span class="hljs-operator">&lt;-</span> data_frame<span class="hljs-punctuation">[</span>row<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">]</span>
+          <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>value<span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;&amp;</span> value <span class="hljs-operator">==</span> <span class="hljs-number">0</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+            <span class="hljs-keyword">break</span>
+          <span class="hljs-punctuation">}</span>
+        <span class="hljs-punctuation">}</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Filter and Convert BMI Column</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Replaces invalid BMI entries (&#x27;?&#x27; or blank) with NA, converts to numeric, and filters out NA or zero values.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">data_frame</span></span> A data frame containing a BMI column.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> A filtered data frame with valid numeric BMI values only.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span>
+#&#x27; filter_weight_columns(pima_df)</span>
+filter_weight_columns <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  data_frame<span class="hljs-operator">$</span>BMI<span class="hljs-punctuation">[</span>data_frame<span class="hljs-operator">$</span>BMI <span class="hljs-operator">==</span> <span class="hljs-string">&quot;?&quot;</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> <span class="hljs-literal">NA</span>
+  data_frame<span class="hljs-operator">$</span>BMI<span class="hljs-punctuation">[</span>data_frame<span class="hljs-operator">$</span>BMI <span class="hljs-operator">==</span> <span class="hljs-string">&quot;&quot;</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> <span class="hljs-literal">NA</span>
+  data_frame<span class="hljs-operator">$</span>BMI <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">as.numeric</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-operator">$</span>BMI<span class="hljs-punctuation">)</span>
+  data_frame <span class="hljs-operator">&lt;-</span> data_frame <span class="hljs-operator">%&gt;%</span>
+    filter<span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>BMI<span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> BMI <span class="hljs-operator">!=</span> <span class="hljs-number">0</span><span class="hljs-punctuation">)</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Main Runner Function for Processing and Aggregation</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Loads and preprocesses the PIMA dataset, assigns BMI categories, and computes the percentage of</span>
+<span class="hljs-comment">#&#x27; diabetic individuals within each category. Prints a pivot table summarizing the result.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> No return value. Prints the output pivot table to the console.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@examples</span>
+#&#x27; runner()</span>
+runner <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  pima <span class="hljs-operator">&lt;-</span> load_dataset<span class="hljs-punctuation">(</span>PIMA_PATH<span class="hljs-punctuation">)</span>
+  pima <span class="hljs-operator">&lt;-</span> clean_row_with_zero<span class="hljs-punctuation">(</span>pima<span class="hljs-punctuation">)</span>
+  pima <span class="hljs-operator">&lt;-</span> clean_missing_numeric_columns<span class="hljs-punctuation">(</span>pima<span class="hljs-punctuation">)</span>
+  pima <span class="hljs-operator">&lt;-</span> filter_weight_columns<span class="hljs-punctuation">(</span>pima<span class="hljs-punctuation">)</span>
+  pima <span class="hljs-operator">&lt;-</span> append_table_with_category<span class="hljs-punctuation">(</span>pima<span class="hljs-punctuation">)</span>
+  pima_outcome_pivot <span class="hljs-operator">&lt;-</span> pima <span class="hljs-operator">%&gt;%</span>
+    group_by<span class="hljs-punctuation">(</span>Category<span class="hljs-punctuation">)</span> <span class="hljs-operator">%&gt;%</span>
+    summarise<span class="hljs-punctuation">(</span>
+      Count <span class="hljs-operator">=</span> n<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span>
+      Diabetes_Outcome <span class="hljs-operator">=</span> <span class="hljs-built_in">sum</span><span class="hljs-punctuation">(</span>Outcome <span class="hljs-operator">==</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span> na.rm <span class="hljs-operator">=</span> <span class="hljs-literal">TRUE</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span>
+      Percentage <span class="hljs-operator">=</span> <span class="hljs-punctuation">(</span>Diabetes_Outcome <span class="hljs-operator">/</span> Count<span class="hljs-punctuation">)</span> <span class="hljs-operator">*</span> <span class="hljs-number">100</span>
+    <span class="hljs-punctuation">)</span>
+  print<span class="hljs-punctuation">(</span>pima_outcome_pivot<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+runner<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>
+
+</code></pre>
+  <p>10- Generate a scatter matrix plot showing all variables vs each other with histograms on the diagonal. Feel free
+    to use existing open-source R packages.</p>
+  <pre><code class="language-r">library<span class="hljs-punctuation">(</span>dplyr<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>tidyr<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>readr<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>styler<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>reshape2<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>ggplot2<span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span>GGally<span class="hljs-punctuation">)</span>
+
+PIMA_PATH <span class="hljs-operator">&lt;-</span> <span class="hljs-string">&quot;Diabetes-data.csv&quot;</span>
+
+<span class="hljs-comment">#&#x27; Load the PIMA Diabetes Dataset</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Reads a CSV file into a data frame using `read_csv`. Optionally shows column types.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">file_path</span></span> Path to the dataset CSV file.</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">col_names</span></span> Logical; if TRUE, treats first row as column headers.</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">display_type</span></span> Logical; if TRUE, displays column type messages.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> A data frame containing the loaded data.</span>
+load_dataset <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>file_path<span class="hljs-punctuation">,</span>
+                         col_names <span class="hljs-operator">=</span> <span class="hljs-literal">TRUE</span><span class="hljs-punctuation">,</span>
+                         display_type <span class="hljs-operator">=</span> <span class="hljs-literal">FALSE</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  data_frame <span class="hljs-operator">&lt;-</span> read_csv<span class="hljs-punctuation">(</span>file_path<span class="hljs-punctuation">,</span> col_names <span class="hljs-operator">=</span> col_names<span class="hljs-punctuation">,</span> show_col_types <span class="hljs-operator">=</span> display_type<span class="hljs-punctuation">)</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+
+<span class="hljs-comment">#&#x27; Calculate the Statistical Mode of a Vector</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Returns the most frequently occurring value (mode) in the input vector.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">x</span></span> A numeric or character vector.</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">na.rm</span></span> Logical; if TRUE, removes NA values before computation.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> The most common value in the vector, or NA if the input is empty.</span>
+stat_mode <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>x<span class="hljs-punctuation">,</span> na.rm <span class="hljs-operator">=</span> <span class="hljs-literal">FALSE</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  x <span class="hljs-operator">&lt;-</span> na.omit<span class="hljs-punctuation">(</span>x<span class="hljs-punctuation">)</span>
+  <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-built_in">length</span><span class="hljs-punctuation">(</span>x<span class="hljs-punctuation">)</span> <span class="hljs-operator">==</span> <span class="hljs-number">0</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span><span class="hljs-literal">NA</span><span class="hljs-punctuation">)</span>
+  <span class="hljs-punctuation">}</span>
+  model_value <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>sort<span class="hljs-punctuation">(</span>table<span class="hljs-punctuation">(</span>value <span class="hljs-operator">=</span> x<span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> decreasing <span class="hljs-operator">=</span> <span class="hljs-literal">TRUE</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">[</span><span class="hljs-number">1</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Clean Columns with Missing Numeric Data</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Checks each column for NA values. Drops the column if more than 20% are missing; otherwise, replaces NA with the column&#x27;s minimum value.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">data_frame</span></span> A data frame to process.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> A cleaned data frame with fewer or no missing numeric values.</span>
+clean_missing_numeric_columns <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  incomplete_numeric_columns <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>
+  <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>col <span class="hljs-keyword">in</span> <span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-built_in">any</span><span class="hljs-punctuation">(</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      incomplete_numeric_columns <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span>incomplete_numeric_columns<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">)</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+  <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>col <span class="hljs-keyword">in</span> incomplete_numeric_columns<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    total_count <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">length</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span>
+    na_count <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">sum</span><span class="hljs-punctuation">(</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-punctuation">(</span>na_count <span class="hljs-operator">/</span> total_count<span class="hljs-punctuation">)</span> <span class="hljs-operator">&gt;</span> <span class="hljs-number">0.20</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> <span class="hljs-literal">NULL</span>
+    <span class="hljs-punctuation">}</span> <span class="hljs-keyword">else</span> <span class="hljs-punctuation">{</span>
+      min_value <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">min</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span>
+      data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">[</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> min_value
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Inspect for Zeroes in Numeric Columns</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Loops through each row and checks numeric columns (except Outcome and Pregnancies) for zeroes. Currently retains all data — placeholder logic.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">data_frame</span></span> A data frame to validate.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> The original data frame, unchanged.</span>
+
+clean_row_with_zero <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>row <span class="hljs-keyword">in</span> <span class="hljs-number">1</span><span class="hljs-operator">:</span>nrow<span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>col <span class="hljs-keyword">in</span> <span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-punctuation">(</span>col <span class="hljs-operator">%in%</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;Outcome&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;Pregnancies&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;&amp;</span>
+        <span class="hljs-built_in">is.numeric</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[[</span>col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">[</span>row<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;&amp;</span> data_frame<span class="hljs-punctuation">[</span>row<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">]</span> <span class="hljs-operator">==</span> <span class="hljs-number">0</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+          value <span class="hljs-operator">&lt;-</span> data_frame<span class="hljs-punctuation">[</span>row<span class="hljs-punctuation">,</span> col<span class="hljs-punctuation">]</span>
+          <span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>value<span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;&amp;</span> value <span class="hljs-operator">==</span> <span class="hljs-number">0</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+            <span class="hljs-keyword">break</span>
+          <span class="hljs-punctuation">}</span>
+        <span class="hljs-punctuation">}</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Clean and Convert Glucose, BMI, and Related Columns</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Replaces invalid entries (`?` and blanks) with NA, coerces specified columns to numeric, and bins Glucose values into deciles.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@param <span class="hljs-variable">data_frame</span></span> A data frame containing Glucose and BMI fields.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> A cleaned and transformed data frame with a GlucoseGroup column.</span>
+clean_up_glucose_bmi <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  data_frame<span class="hljs-punctuation">[</span>data_frame <span class="hljs-operator">==</span> <span class="hljs-string">&quot;?&quot;</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> <span class="hljs-literal">NA</span>
+  data_frame<span class="hljs-punctuation">[</span>data_frame <span class="hljs-operator">==</span> <span class="hljs-string">&quot;&quot;</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> <span class="hljs-literal">NA</span>
+  data_frame<span class="hljs-operator">$</span>Glucose <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">as.numeric</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-operator">$</span>Glucose<span class="hljs-punctuation">)</span>
+  data_frame<span class="hljs-operator">$</span>DiabetesPedigreeFunction <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">as.numeric</span><span class="hljs-punctuation">(</span><span class="hljs-built_in">as.character</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-operator">$</span>DiabetesPedigreeFunction<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+  data_frame<span class="hljs-operator">$</span>Age <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">as.numeric</span><span class="hljs-punctuation">(</span><span class="hljs-built_in">as.character</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-operator">$</span>Age<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+
+  data_frame <span class="hljs-operator">&lt;-</span> data_frame <span class="hljs-operator">%&gt;%</span>
+    filter<span class="hljs-punctuation">(</span><span class="hljs-operator">!</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>Glucose<span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> <span class="hljs-operator">!</span><span class="hljs-built_in">is.na</span><span class="hljs-punctuation">(</span>BMI<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+  data_frame <span class="hljs-operator">&lt;-</span> data_frame <span class="hljs-operator">%&gt;%</span> mutate<span class="hljs-punctuation">(</span>GlucoseGroup <span class="hljs-operator">=</span> cut<span class="hljs-punctuation">(</span>Glucose<span class="hljs-punctuation">,</span> breaks <span class="hljs-operator">=</span> seq<span class="hljs-punctuation">(</span><span class="hljs-number">0</span><span class="hljs-punctuation">,</span> <span class="hljs-number">200</span><span class="hljs-punctuation">,</span> by <span class="hljs-operator">=</span> <span class="hljs-number">10</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>data_frame<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-comment">#&#x27; Run the Full Data Cleaning and Scatter Matrix Plot</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; Loads and preprocesses the PIMA dataset, including cleaning, NA handling, and binning.</span>
+<span class="hljs-comment">#&#x27; Produces a scatter matrix plot (pairplot) to visualize variable relationships by diabetes status.</span>
+<span class="hljs-comment">#&#x27;</span>
+<span class="hljs-comment">#&#x27; <span class="hljs-doctag">@return</span> A `ggpairs` object visualizing the dataset. Also plots it to the graphics device.</span>
+runner <span class="hljs-operator">&lt;-</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  pima <span class="hljs-operator">&lt;-</span> load_dataset<span class="hljs-punctuation">(</span>PIMA_PATH<span class="hljs-punctuation">)</span>
+  pima <span class="hljs-operator">&lt;-</span> clean_missing_numeric_columns<span class="hljs-punctuation">(</span>pima<span class="hljs-punctuation">)</span>
+  pima <span class="hljs-operator">&lt;-</span> clean_row_with_zero<span class="hljs-punctuation">(</span>pima<span class="hljs-punctuation">)</span>
+  pima <span class="hljs-operator">&lt;-</span> clean_up_glucose_bmi<span class="hljs-punctuation">(</span>pima<span class="hljs-punctuation">)</span>
+
+  ggpairs<span class="hljs-punctuation">(</span>
+    data <span class="hljs-operator">=</span> pima<span class="hljs-punctuation">,</span>
+    columns <span class="hljs-operator">=</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span>
+      <span class="hljs-string">&quot;Pregnancies&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-string">&quot;Glucose&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-string">&quot;BloodPressure&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-string">&quot;SkinThickness&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-string">&quot;BMI&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-string">&quot;DiabetesPedigreeFunction&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-string">&quot;Age&quot;</span>
+    <span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span>
+    aes<span class="hljs-punctuation">(</span>color <span class="hljs-operator">=</span> factor<span class="hljs-punctuation">(</span>Outcome<span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> alpha <span class="hljs-operator">=</span> <span class="hljs-number">0.5</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span>
+    lower <span class="hljs-operator">=</span> <span class="hljs-built_in">list</span><span class="hljs-punctuation">(</span>continuous <span class="hljs-operator">=</span> wrap<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;points&quot;</span><span class="hljs-punctuation">,</span> alpha <span class="hljs-operator">=</span> <span class="hljs-number">1.5</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span>
+    diag <span class="hljs-operator">=</span> <span class="hljs-built_in">list</span><span class="hljs-punctuation">(</span>continuous <span class="hljs-operator">=</span> wrap<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;barDiag&quot;</span><span class="hljs-punctuation">,</span> bins <span class="hljs-operator">=</span> <span class="hljs-number">15</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span>
+    upper <span class="hljs-operator">=</span> <span class="hljs-built_in">list</span><span class="hljs-punctuation">(</span>continuous <span class="hljs-operator">=</span> wrap<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;cor&quot;</span><span class="hljs-punctuation">,</span> size <span class="hljs-operator">=</span> <span class="hljs-number">3</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+  <span class="hljs-punctuation">)</span> <span class="hljs-operator">+</span>
+    theme_minimal<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">+</span>
+    labs<span class="hljs-punctuation">(</span>title <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Scatter Matrix of PIMA Indian Diabetes Dataset&quot;</span><span class="hljs-punctuation">,</span> subtitle <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Showing relationships between Pregnancies,Glucose,BloodPressure,SkinThickness,BMI,DiabetesPedigreeFunction,Age&quot;</span><span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+runner<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>
+
+<p><img src="scatter_matrix.png" alt="Scatter Matrix" /></p>
+
+<span class="hljs-operator">-</span><span class="hljs-operator">-</span><span class="hljs-operator">-</span>
+
+<span class="hljs-comment">### Tip(s):</span>
+write comments to explain your code and avoid hard<span class="hljs-operator">-</span>coding values <span class="hljs-punctuation">(</span>i.e. make sure your code is as generic as possible<span class="hljs-punctuation">)</span>.
+
+<span class="hljs-operator">-</span><span class="hljs-operator">-</span><span class="hljs-operator">-</span>
+
+<span class="hljs-comment">## Submission Guidelines:</span>
+
+<span class="hljs-operator">-</span> Submission deadline is July <span class="hljs-number">20</span>th<span class="hljs-punctuation">,</span> <span class="hljs-number">2025.</span>  
+<span class="hljs-operator">-</span> Document your R code <span class="hljs-keyword">in</span> a well<span class="hljs-operator">-</span>structured report. We recommend you answer the questions <span class="hljs-keyword">in</span> order.  
+<span class="hljs-operator">-</span> Make sure you submit either a Word Document or a PDF file.  
+<span class="hljs-operator">-</span> We will run your code<span class="hljs-punctuation">,</span> so make sure the code is plain<span class="hljs-operator">-</span>text and not a screenshot <span class="hljs-punctuation">(</span>you can include screenshots of the results<span class="hljs-punctuation">)</span>.  
+<span class="hljs-operator">-</span> Make sure you include your Declaration of Authorship form.  
+<span class="hljs-operator">-</span> Submit your report by emailing it to <span class="hljs-punctuation">(</span>Please send your report as an attachment<span class="hljs-punctuation">)</span><span class="hljs-operator">:</span> weeklyclasses<span class="hljs-operator">@</span>conted.ox.ac.uk  
+
+<span class="hljs-operator">-</span><span class="hljs-operator">-</span><span class="hljs-operator">-</span>
+
+<span class="hljs-comment">### Note:</span>
+Feel free to explore additional resources<span class="hljs-punctuation">,</span> documentation<span class="hljs-punctuation">,</span> and online tutorials to enhance your understanding and complete the tasks effectively.
+
+<span class="hljs-operator">*</span><span class="hljs-operator">*</span>All the best with your assignment<span class="hljs-operator">!</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span>
+</code></pre>
+
+  <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+
+</body>
+
+</html>

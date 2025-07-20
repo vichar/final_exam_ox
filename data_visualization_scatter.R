@@ -5,9 +5,14 @@ library(styler)
 library(reshape2)
 library(ggplot2)
 
-# Loading Data
 
 PIMA_PATH <- "Diabetes-data.csv"
+#' Load the PIMA Diabetes Dataset
+#'
+#' Reads a CSV file into a data frame using readr. Optionally displays column type information.
+#'
+#' @param file_path String. Path to the CSV file.
+#' @param col_names Logical. Whether the file contains header names. Default_
 load_dataset <- function(file_path,
                          col_names = TRUE,
                          display_type = FALSE) {
@@ -16,7 +21,14 @@ load_dataset <- function(file_path,
 }
 
 
-# Define statistical mode
+#' Calculate the Mode of a Vector
+#'
+#' Returns the most frequent (modal) value in the vector, ignoring NA values.
+#'
+#' @param x A numeric or character vector.
+#' @param na.rm Logical. If TRUE, missing values are removed before calculation.
+#'
+#' @return The mode (most common value) of the vector. Returns NA if no values are present.
 stat_mode <- function(x, na.rm = FALSE) {
   x <- na.omit(x)
   if (length(x) == 0) {
@@ -25,7 +37,14 @@ stat_mode <- function(x, na.rm = FALSE) {
   model_value <- names(sort(table(value = x), decreasing = TRUE)[1])
 }
 
-
+#' Handle Missing Values in Numeric Columns
+#'
+#' Checks for missing values in each column. If more than 20% are missing, the column is dropped.
+#' Otherwise, missing values are replaced with the column's minimum value.
+#'
+#' @param data_frame A data frame with possible NA values.
+#'
+#' @return A cleaned data frame with no columns having >20% missing values, and missing values imputed.
 clean_missing_numeric_columns <- function(data_frame) {
   incomplete_numeric_columns <- c()
   for (col in names(data_frame)) {
@@ -46,6 +65,14 @@ clean_missing_numeric_columns <- function(data_frame) {
   return(data_frame)
 }
 
+#' Placeholder Loop for Zero-Value Checking
+#'
+#' Iterates through numeric columns (except 'Outcome' and 'Pregnancies') to examine rows with 0 values.
+#' Does not currently filter out rows — this may be intended for validation or inspection logic.
+#'
+#' @param data_frame The input data frame to be checked.
+#'
+#' @return The unchanged input data frame.
 clean_row_with_zero <- function(data_frame) {
   for (row in 1:nrow(data_frame)) {
     for (col in names(data_frame)) {
@@ -63,6 +90,14 @@ clean_row_with_zero <- function(data_frame) {
   return(data_frame)
 }
 
+#' Placeholder Loop for Zero-Value Checking
+#'
+#' Iterates through numeric columns (except 'Outcome' and 'Pregnancies') to examine rows with 0 values.
+#' Does not currently filter out rows — this may be intended for validation or inspection logic.
+#'
+#' @param data_frame The input data frame to be checked.
+#'
+#' @return The unchanged input data frame.
 runner <- function() {
   pima <- load_dataset(PIMA_PATH)
   pima <- clean_missing_numeric_columns(pima)
