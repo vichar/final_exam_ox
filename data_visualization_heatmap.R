@@ -87,21 +87,23 @@ clean_missing_numeric_columns <- function(data_frame) {
 #' @examples
 #' clean_row_with_zero(pima_df)
 clean_row_with_zero <- function(data_frame) {
-for (row in 1:nrow(data_frame)) {
-for (col in names(data_frame)) {
-if (!(col %in% c("Outcome", "Pregnancies")) &&
-is.numeric(data_frame[[col]])) {
-if (!is.na(data_frame[row, col]) && data_frame[row, col] == 0) {
-value <- data_frame[row, col]
-if (!is.na(value) && value == 0) {
-data_frame[row] <- NA # Set the entire row to NA if a zero is found
+  for (row in 1:nrow(data_frame)) {
+    for (col in names(data_frame)) {
+      if (!(col %in% c("Outcome", "Pregnancies")) &&
+          is.numeric(data_frame[[col]])) {
+        if (!is.na(data_frame[row, col]) && data_frame[row, col] == 0) {
+          value <- data_frame[row, col]
+          if (!is.na(value) && value == 0) {
+            data_frame[row] <- NA # Set the entire row to NA if a zero is found
+            break
+          }
+        }
+      }
+    }
+  }
+  data_frame <- na.omit(data_frame)
+  return(data_frame)
 }
-}
-}
-}
-}
-data_frame <- na.omit(data_frame)
-return(data_frame)}
 
 #' Main Processing Pipeline for PIMA Dataset
 #'
@@ -134,11 +136,9 @@ runner <- function() {
   colnames(corelation_dataframe) <- c("Var1", "Var2", "Correlation")
   ggplot(corelation_dataframe, aes(x = Var1, y = Var2, fill = Correlation)) +
     geom_tile(color = "white") +
-    scale_fill_gradient2(
-      low = "blue",
-      mid = "yellow",
-      high = "red"
-    ) +
+    scale_fill_gradient2(low = "blue",
+                         mid = "yellow",
+                         high = "red") +
     labs(title = "Correlation Heatmap of PIMA Variables", x = NULL, y = NULL) +
     theme(axis.text.x = element_text(angle = 45, hjust = 1))
 }
